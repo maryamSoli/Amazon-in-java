@@ -66,11 +66,11 @@ public class Admin {
         System.out.println("Enter a Valid E-mail Address\n(A valid E-mail Address Pattern is Like:\n(a to z upper or lower case/numbers/underline(_)/dot(.)@gmail.com");
         setEmail(input.nextLine());
 
-
-        setUserName(uuid.toString());
+        String u = uuid.toString();
+        setUserName(u);
         System.out.println("Your Username is : ");
-        //getUserName();
-        System.out.println(uuid.toString());
+        getUserName();
+        System.out.println(u);
 
         System.out.println("Your Password is :");
         setPassWord(uuid.toString());
