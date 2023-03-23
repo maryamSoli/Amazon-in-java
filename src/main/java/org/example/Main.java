@@ -2,6 +2,10 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        Admin a = new Admin();
+        a.Admin();
+        User u = new User();
+        u.User();
     }
 }
