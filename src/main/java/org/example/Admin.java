@@ -10,20 +10,24 @@ public class Admin {
     private String userName;
     private String passWord;
     private String email;
-    private UUID uuid;
+
 
     Scanner input = new Scanner(System.in);
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName() {
+        UUID uuid = UUID.randomUUID();
+
+        this.userName = uuid.toString();
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassWord() {
+
+        UUID uuid = UUID.randomUUID();
+        this.passWord = uuid.toString();
     }
 
     public String getPassWord() {
@@ -61,20 +65,33 @@ public class Admin {
 
     public void Admin(){
 
-       this.uuid = UUID.randomUUID();
 
         System.out.println("Enter a Valid E-mail Address\n(A valid E-mail Address Pattern is Like:\n(a to z upper or lower case/numbers/underline(_)/dot(.)@gmail.com");
         setEmail(input.nextLine());
 
-        String u = uuid.toString();
-        setUserName(u);
+
         System.out.println("Your Username is : ");
-        getUserName();
-        System.out.println(u);
+        setUserName();
+        System.out.println(getUserName());
 
         System.out.println("Your Password is :");
-        setPassWord(uuid.toString());
-        getPassWord();
+        setPassWord();
+        System.out.println(getPassWord());
+    }
+
+
+    @Override
+    public String toString() {
+        return "ADMIN"+ "\n" +
+                "USERNAME:" + userName +"\n" +
+                "PASSWORD:" + passWord + "\n" +
+                "E-Mail:" + email + "\n" ;
+    }
+
+    public void defaultAdmin(){
+
+        this.passWord = "123456";
+        this.userName = "defaultAdmin";
     }
 
 }

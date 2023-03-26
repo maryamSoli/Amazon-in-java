@@ -4,12 +4,15 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.Properties;
+//import javax.mail; sending a welcome email
 
 
 public class User extends Admin {
 
     private String phoneNumber;
     private String address;
+    private double wallet;
     private UUID uuid;
     ArrayList<User> theUsers = new ArrayList();
 
@@ -19,6 +22,37 @@ public class User extends Admin {
     public void setAddress(String address) {this.address = address;}
 
     public String getAddress() {return address;}
+
+    public void setWallet(String wallet) {
+
+        String pricePattern = "^\\d\\.\\d$";
+
+        boolean flag ;
+
+        while (true) {
+
+            flag = wallet.matches(pricePattern);
+
+            if (flag == false) {
+
+                System.out.println("ERROR\nTRY AGAIN");
+
+                wallet = input.nextLine();
+
+            } else {
+
+                this.wallet = Double.parseDouble(wallet);
+
+                break;
+            }
+
+        }
+
+    }
+
+    public double getWallet() {
+        return wallet;
+    }
 
     public void setPhoneNumber(String phoneNumber) {
 
@@ -59,15 +93,6 @@ public class User extends Admin {
 
         System.out.println("Enter Your Address");
         setAddress(input.nextLine());
-
-       /* System.out.println("Enter a Valid E-mail Address\n(A valid E-mail Address Pattern is Like:\n(a to z upper or lower case/numbers/underline(_)/dot(.)@gmail.com");
-        setEmail(input.nextLine());
-
-        System.out.println("Your Username is : ");
-        setUserName(uuid.toString());
-
-        System.out.println("Your Password is :");
-        setPassWord(uuid.toString());*/
 
         super.Admin();
 
