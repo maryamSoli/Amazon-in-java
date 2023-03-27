@@ -70,4 +70,11 @@ public class Seller {
         setPassWord();
         System.out.println(getPassWord());
     }
+
+    @Override
+    public String toString() {
+        return  "COMPANY NAME:" + companyName +"\n" +
+                "PASSWORD:" + passWord + "\n"; //+
+                //"WALLET:" + wallet + "\n" ;
+    }
 }

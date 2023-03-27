@@ -98,4 +98,9 @@ public class Product {
 
 
     }
+
+    public void addQuantityByOne(){
+
+        this.quantity ++;
+    }
 }

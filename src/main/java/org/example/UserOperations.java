@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class UserOperations {
 
     ArrayList<User> theUsers = new ArrayList();
+    ArrayList<String> shoppingCart = new ArrayList();
     Scanner input = new Scanner(System.in);
 
 
@@ -86,7 +87,7 @@ public class UserOperations {
         }
 
         if (flag == 0){
-            System.out.println("Username or password is Incorrect. Try Aagain");
+            System.out.println("Username or password is Incorrect. Try Again");
         }
 
         else{
@@ -134,4 +135,86 @@ public class UserOperations {
             System.out.println("Changes Submitted Successfully!");
         }
     }
+
+    public void addToCart(){
+
+        int choice;
+        SellerOperations Sobj = new SellerOperations();
+
+        do {
+
+            Sobj.ProductMenu();
+
+            choice = input.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println("");
+                    break;
+
+
+                case 2:
+                    System.out.println("You Can See The List of Available Products Here:");
+                    int rowNumber = 1;
+                    ArrayList<String>temp = new ArrayList();
+                    for (Clothes i : Sobj.theClothes){
+                        temp.add( Integer.toString(rowNumber) + ".  " + i.toString());
+                        System.out.println();
+                        rowNumber++;
+                    }
+                    System.out.println("Enter The Row Number Of Your Wanted Product To Add To Your Cart");
+                    String Option =input.nextLine();
+                    for (String i : temp){
+                        if (Option.equals(i.charAt(0))){
+                            shoppingCart.add(i.toString());
+                            break;
+                        }
+                    }
+                    
+
+
+
+                    break;
+
+
+                case 3:
+                    break;
+
+
+                case 4:
+                    break;
+
+
+                case 5:
+                    break;
+
+
+                case 6:
+                    break;
+
+
+                case 7:
+                    break;
+
+
+                case 8:
+                    break;
+
+
+                case 9:
+                    break;
+
+
+                case 0:
+                    break;
+
+            }
+        }
+
+        while (choice!=10)
+
+    }
+
+
 }
