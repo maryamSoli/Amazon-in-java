@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class SellerOperations {
 
     public boolean  sloginChecker;
+    public boolean  authorizedSellersChecker;
     ArrayList<Seller> theSellers = new ArrayList();
     ArrayList<String> theSellersAuthorizingRequests = new ArrayList();
     ArrayList<Product> theProducts = new ArrayList();
@@ -93,8 +94,12 @@ public class SellerOperations {
         }
         if (flag != 0) {
             System.out.println("You Are Authorized to Add your Product!");
-        } else {
+             authorizedSellersChecker = true;
+        }
 
+        else {
+
+            authorizedSellersChecker = false;
             System.out.println("You Are Not Authorized\nPossible Reasons:");
             System.out.println("1.The Admins haven't Seen Your Request Yet( Possible Solution : Check It Again Later!)");
             System.out.println("2.You have not Requested for Authorization( Possible Solution : Make a Request!");

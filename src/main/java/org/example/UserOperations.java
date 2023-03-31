@@ -7,6 +7,7 @@ import java.time.LocalDate;
 public class UserOperations {
 
     public boolean  uloginChecker;
+    public boolean  OrderConfirmChecker;
     ArrayList<User> theUsers = new ArrayList();
     ArrayList<Product> shoppingCart = new ArrayList();
     ArrayList<String> userFunding = new ArrayList();
@@ -413,7 +414,7 @@ public class UserOperations {
         shoppingCart = null;
     }
 
-    public void showListOfOrders(){
+    public void authorizedOrders(){
 
         String password = input.nextLine();
 
@@ -432,10 +433,12 @@ public class UserOperations {
         if (flag != 0) {
             for (String i : user.ListOfOrders){
                 System.out.println(i);
+                OrderConfirmChecker = true;
             }
         }
         else {
             System.out.println("Your order is Not confirmed");
+            OrderConfirmChecker = false;
         }
 
     }
