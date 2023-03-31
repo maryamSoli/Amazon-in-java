@@ -82,8 +82,8 @@ public class Admin {
 
     @Override
     public String toString() {
-        return "USERNAME:" + userName +"\n" +
-                "PASSWORD:" + passWord + "\n" +
+        return  "USERNAME:" + userName +"  " +
+                "PASSWORD:" + passWord + "  " +
                 "E-Mail:" + email + "\n" ;
     }
 

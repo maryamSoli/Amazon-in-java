@@ -16,16 +16,17 @@ public class User extends Admin {
     private UUID uuid;
     ArrayList<User> theUsers = new ArrayList();
 
-
+    ArrayList<String> ListOfOrders = new ArrayList();
     Scanner input = new Scanner(System.in);
 
     public void setAddress(String address) {this.address = address;}
 
     public String getAddress() {return address;}
 
-    public void setWallet(String wallet) {
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
 
-        String pricePattern = "^\\d\\.\\d$";
+      /*  String pricePattern = "^\\d\\.\\d$";
 
         boolean flag ;
 
@@ -46,7 +47,7 @@ public class User extends Admin {
                 break;
             }
 
-        }
+        }*/
 
     }
 
@@ -100,7 +101,7 @@ public class User extends Admin {
 
     public String toString() {
         super.toString();
-        return  "PHONE NUMBER:" + phoneNumber +"\n" +
+        return  "PHONE NUMBER:" + phoneNumber +"  " +
                 "ADDRESS:" + address + "\n";
     }
 

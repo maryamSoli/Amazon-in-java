@@ -12,7 +12,6 @@ public class Seller {
     Scanner input = new Scanner(System.in);
 
     public void setPassWord() {
-
         UUID uuid = UUID.randomUUID();
         this.passWord = uuid.toString();
     }
@@ -30,9 +29,10 @@ public class Seller {
         return companyName;
     }
 
-    public void setWallet(String wallet) {
-
-        String pricePattern = "^\\d\\.\\d$";
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
+    }
+       /* String pricePattern = "^\\d\\.\\d$";
 
         boolean flag ;
 
@@ -53,9 +53,8 @@ public class Seller {
                 break;
             }
 
-        }
+        }*/
 
-    }
 
     public double getWallet() {
         return wallet;
@@ -73,8 +72,8 @@ public class Seller {
 
     @Override
     public String toString() {
-        return  "COMPANY NAME:" + companyName +"\n" +
-                "PASSWORD:" + passWord + "\n"; //+
-                //"WALLET:" + wallet + "\n" ;
+        return  "COMPANY NAME:" + companyName +"  " +
+                "PASSWORD:" + passWord + "\n" +
+                "WALLET:" + wallet + "\n" ;
     }
 }

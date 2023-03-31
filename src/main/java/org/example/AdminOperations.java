@@ -7,56 +7,44 @@ public class AdminOperations {
 
     ArrayList<Admin> theAdmins = new ArrayList();
     ArrayList<String> AcceptedSellerAuthorizingRequests = new ArrayList();
+    ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
     Scanner input = new Scanner(System.in);
+
+    User user = new User();
 
 
     public void addAdmin(){
 
         Admin admin = new Admin();
-
         admin.Admin();
-
         theAdmins.add(admin);
     }
 
     public void login(){
 
         Admin admin = new Admin();
-
         int flag = 0;
-
         for (Admin i : theAdmins) {
-
             if (admin.getUserName().equals(i.getUserName()) && admin.getPassWord().equals(i.getPassWord())) {
-
                 System.out.println("Login Successfully!");
-
                 flag++;
-
                 //loginChecker = true;
-
             }
-
         }
 
         if (flag == 0){
-
             System.out.println("Admin is not Registered.");
-
             //loginChecker = false;
-
         }
-
     }
+
+
 
     public void showSellerAuthorizingRequests(){
 
         System.out.println("SHOWING THE COMPANIES THAT ASKED FOR PERMISSION");
-
         SellerOperations requests = new SellerOperations();
-
         for (String i : requests.theSellersAuthorizingRequests){
-
             System.out.println(i);
         }
 
@@ -66,41 +54,127 @@ public class AdminOperations {
         while (true){
 
             int flag = 0;
-
             String company = input.nextLine();
-
             if (company.equals("o")){
+                break;
+            }
+            else {
+                for (String i : requests.theSellersAuthorizingRequests){
+                    if (company.equalsIgnoreCase(i)){
+                        flag++;
+                    }
+                }
+                if (flag == 0){
+                    System.out.println("Such Company Doesn't Exists in the Requests");
+                }
 
+                else {
+                    AcceptedSellerAuthorizingRequests.add(company);
+                    requests.theSellersAuthorizingRequests.remove(company);
+                }
+                requests.theSellersAuthorizingRequests = null;
+            }
+        }
+    }
+
+
+    public void showUsersFundingRequests(){
+
+            System.out.println("SHOWING THE USERS THAT ASKED FOR FUND");
+            UserOperations request = new UserOperations();
+            for (String i : request.userFunding){
+                System.out.println(i);
+            }
+            System.out.println("Enter The Users Passwords To Confirm(When Finished , Enter 'o'");
+            System.out.println("ATTENTION : When You Enter 'o' Every Users Remaining in the Authorizing Requests List Will be Removed Automatically.\nSo Before Entering 'o' Make Sure To Confirm Every Companies You Desire");
+
+            while (true){
+
+                int flag = 0;
+                String password = input.nextLine();
+                if (password.equals("o")){
+
+                    break;
+                }
+
+                else {
+
+                    for (String i : request.userFunding){
+
+                        if (password.equalsIgnoreCase(i)){
+
+                            for (User j : user.theUsers){
+                                if (password.equals(j.getPassWord())){
+                                    j.setWallet(j.getWallet()+input.nextDouble());
+                                }
+                            }
+
+                            flag++;
+                        }
+                    }
+
+                    if (flag == 0){
+                        System.out.println("Such User Password Doesn't Exists in the Requests");
+                    }
+
+                    else {
+                        request.userFunding.remove(password);
+                    }
+
+                    request.userFunding = null;
+                }
+            }
+    }
+
+
+    public void showFinalOrderingRequests() {
+
+        System.out.println("SHOWING THE USERS THAT ASKED FOR FINALIZING ORDERS");
+        UserOperations orequest = new UserOperations();
+        for (String i : orequest.orderREQUEST) {
+            System.out.println(i);
+            }
+
+        System.out.println("Enter The Users Passwords To Confirm(When Finished , Enter 'o'");
+        System.out.println("ATTENTION : When You Enter 'o' Every Users Remaining in the Authorizing Requests List Will be Removed Automatically.\nSo Before Entering 'o' Make Sure To Confirm Every Companies You Desire");
+
+        while (true){
+
+            int flag = 0;
+            String password = input.nextLine();
+            if (password.equals("o")){
                 break;
             }
 
             else {
 
-                for (String i : requests.theSellersAuthorizingRequests){
-
-                    if (company.equalsIgnoreCase(i)){
-
+                for (String i : orequest.orderREQUEST){
+                    if (password.equals(i)){
                         flag++;
                     }
                 }
 
                 if (flag == 0){
-
-                    System.out.println("Such Company Doesn't Exists in the Requests");
+                    System.out.println("Such User Doesn't Exists in the Requests");
                 }
 
                 else {
-
-                    AcceptedSellerAuthorizingRequests.add(company);
-                    requests.theSellersAuthorizingRequests.remove(company);
+                    AcceptedOrderListsRequests.add(password);
+                    orequest.orderREQUEST.remove(password);
                 }
 
-                requests.theSellersAuthorizingRequests = null;
+                orequest.orderREQUEST = null;
 
             }
 
         }
     }
 
+
+    public void showAdmins(){
+        for (Admin i : theAdmins){
+            System.out.println(i.toString());
+        }
+    }
 
 }
