@@ -14,6 +14,8 @@ public class AdminOperations {
     User user = new User();
 
 
+
+
     public void addAdmin(){
 
         Admin admin = new Admin();
@@ -27,15 +29,17 @@ public class AdminOperations {
         int flag = 0;
         for (Admin i : theAdmins) {
             if (admin.getUserName().equals(i.getUserName()) && admin.getPassWord().equals(i.getPassWord())) {
+                aloginChecker = true;
                 System.out.println("Login Successfully!");
                 flag++;
-                aloginChecker = true;
+
             }
         }
 
         if (flag == 0){
-            System.out.println("Admin is not Registered Or Username Or Password Is Not Correct.");
             aloginChecker = false;
+            System.out.println("Admin is not Registered Or Username Or Password Is Not Correct.");
+
         }
     }
 

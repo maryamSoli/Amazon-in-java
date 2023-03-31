@@ -17,6 +17,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
 
+
+
+
         int accountChoice;
         int adminChoice;
         int userChoice;
@@ -108,55 +111,57 @@ public class Main {
 
                      else {
                          soObj.login();
-                     }
 
-                     if (soObj.sloginChecker == true){
+                         if (soObj.sloginChecker == true){
 
-                         mObj.SellerMenu();
-                         sellerChoice =input.nextInt();
+                             mObj.SellerMenu();
+                             sellerChoice =input.nextInt();
 
-                         do {
+                             do {
 
-                             if (sellerChoice == 1) {
-                                 soObj.AuthorizingRequest();
-                             }
+                                 if (sellerChoice == 1) {
+                                     soObj.AuthorizingRequest();
+                                 }
 
-                             else if (sellerChoice == 2) {
-                                 soObj.AuthorizedSellers();
-                             }
+                                 else if (sellerChoice == 2) {
+                                     soObj.AuthorizedSellers();
+                                 }
 
-                             else if (sellerChoice == 3) {
+                                 else if (sellerChoice == 3) {
 
-                                 if (soObj.authorizedSellersChecker==true) {
-                                     soObj.addProduct();
+                                     if (soObj.authorizedSellersChecker==true) {
+                                         soObj.addProduct();
+                                     }
+
+                                     else {
+                                         System.out.println("You Are Not Authorized To Add Your Product\nGet Authorized First");
+                                     }
+
+                                 }
+
+                                 else if (sellerChoice == 4) {
+                                     sObj.getWallet();
+                                 }
+
+                                 else if (sellerChoice == 5) {
+                                     shopObj.ContactMenu();
                                  }
 
                                  else {
-                                     System.out.println("You Are Not Authorized To Add Your Product\nGet Authorized First");
+                                     System.out.println("Such Option Doesn't Exist.Try Again");
                                  }
 
                              }
-
-                             else if (sellerChoice == 4) {
-                                 sObj.getWallet();
-                             }
-
-                             else if (sellerChoice == 5) {
-                                 shopObj.ContactMenu();
-                             }
-
-                             else {
-                                 System.out.println("Such Option Doesn't Exist.Try Again");
-                             }
-
+                             while (sellerChoice!=300);
                          }
-                         while (sellerChoice!=300);
+
+
+                         else {
+                             System.out.println("You can not access this section.\nLogin first!");
+                         }
                      }
 
 
-                    else {
-                        System.out.println("You can not access this section.\nLogin first!");
-                    }
                     break;
 
 

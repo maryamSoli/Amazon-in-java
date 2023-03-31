@@ -91,6 +91,9 @@ public class Admin {
 
         this.passWord = "123456";
         this.userName = "defaultAdmin";
+
     }
+
+
 
 }
