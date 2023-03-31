@@ -5,25 +5,12 @@ import java.util.Scanner;
 
 public class SellerOperations {
 
+    public boolean  sloginChecker;
     ArrayList<Seller> theSellers = new ArrayList();
     ArrayList<String> theSellersAuthorizingRequests = new ArrayList();
     ArrayList<Product> theProducts = new ArrayList();
     Scanner input = new Scanner(System.in);
 
-
-   /* public int compareCompanies(Seller s1, Seller s2){
-
-        if (s1.getCompanyName().equalsIgnoreCase(s2.getCompanyName())){
-
-            System.out.println("Company With This Name Already Exists.");
-
-            return 0;
-
-        }
-
-        return 1;
-
-    }*/
 
     public void CreateAccount() {
 
@@ -50,14 +37,13 @@ public class SellerOperations {
                 System.out.println("Login Successfully!");
                 flag++;
 
-                //loginChecker = true;
+                sloginChecker = true;
             }
         }
         if (flag == 0) {
-            System.out.println("Seller is not Registered.");
-            System.out.println("Create Account First!");
+            System.out.println("Seller is not Registered Or Company Name Or Password Is Not Correct.");
 
-            //loginChecker = false;
+            sloginChecker = false;
         }
     }
 

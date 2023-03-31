@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public class UserOperations {
 
+    public boolean  uloginChecker;
     ArrayList<User> theUsers = new ArrayList();
     ArrayList<Product> shoppingCart = new ArrayList();
     ArrayList<String> userFunding = new ArrayList();
@@ -43,6 +44,7 @@ public class UserOperations {
         }
     }
 
+
     public void login(){
 
         User user = new User();
@@ -52,16 +54,15 @@ public class UserOperations {
                 System.out.println("Login Successfully!");
                 flag++;
 
-                //loginChecker = true;
+            uloginChecker = true;
             }
         }
 
         if (flag == 0){
 
-            System.out.println("User is not Registered.");
-            System.out.println("Create Account First!");
+            System.out.println("User is not Registered Or Username Or Password Is Not Correct.");
 
-            //loginChecker = false;
+            uloginChecker = false;
         }
     }
 
@@ -142,28 +143,6 @@ public class UserOperations {
         }
     }
 
-    /*public void addPhone(){
-
-        System.out.println("Enter The Row Number Of Your Wanted Smart Phone To Add To Your Cart ");
-        //"(when orders finished press 'o' to get out)");
-        int option = input.nextInt();
-        for (SmartPhone i : Sobj.theSmartPhones){
-            if (option ==  Sobj.theSmartPhones.indexOf(i)){
-                shoppingCart.add(i);
-            }
-        }
-    }
-
-    public void addLaptop(){
-
-        System.out.println("Enter The Row Number Of Your Wanted Laptop To Add To Your Cart");
-        int option = input.nextInt();
-        for (Laptop i : Sobj.theLaptops){
-            if (option ==  Sobj.theLaptops.indexOf(i)){
-                shoppingCart.add(i);
-            }
-        }
-    }*/
 
     public void addToCart_LeaveCommentChoice(){
         System.out.println("1 : Add To Cart");
@@ -312,122 +291,9 @@ public class UserOperations {
         addToCart_LeaveCommentChoice();
     }
 
+    public void seeShoppingCart(){
 
-   /* public void searchByBrandElectronics(){
-
-        Sobj.electronicsMenu();
-
-        int electronicsChoice = input.nextInt();
-
-        if (electronicsChoice == 1) {
-            String brand = input.nextLine();
-            int flag = 0;
-            for (Laptop i : Sobj.theLaptops) {
-                if (brand.equalsIgnoreCase(i.getBrand())) {
-                    System.out.println(Sobj.theLaptops.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Laptop With Brand " + brand + " not Found.");
-            }
-            addLaptop();
-        }
-
-        else {
-            String brand = input.nextLine();
-            int flag = 0;
-            for (SmartPhone i : Sobj.theSmartPhones) {
-                if (brand.equalsIgnoreCase(i.getBrand())) {
-                    System.out.println(Sobj.theSmartPhones.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Smart Phone With Brand " + brand + " not Found.");
-            }
-            addPhone();
-        }
-    }
-
-
-    public void searchByNameElectronics(){
-
-        Sobj.electronicsMenu();
-
-        int electronicsChoice = input.nextInt();
-
-        if (electronicsChoice == 1) {
-            String name = input.nextLine();
-            int flag = 0;
-            for (Laptop i : Sobj.theLaptops) {
-                if (name.equalsIgnoreCase(i.getName())) {
-                    System.out.println(Sobj.theLaptops.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Laptop With Name " + name + " not Found.");
-            }
-            addLaptop();
-        }
-
-        else {
-            String name = input.nextLine();
-            int flag = 0;
-            for (SmartPhone i : Sobj.theSmartPhones) {
-                if (name.equalsIgnoreCase(i.getName())) {
-                    System.out.println(Sobj.theSmartPhones.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Smart Phone With Name " + name + " not Found.");
-            }
-            addPhone();
-        }
-    }
-
-
-    public void searchBySellerCompanyElectronics(){
-
-        Sobj.electronicsMenu();
-
-        int electronicsChoice = input.nextInt();
-
-        if (electronicsChoice == 1) {
-            String company = input.nextLine();
-            int flag = 0;
-            for (Laptop i : Sobj.theLaptops) {
-                if (company.equalsIgnoreCase(i.getSellerCompany())) {
-                    System.out.println(Sobj.theLaptops.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Laptop With Seller Company " + company + " not Found.");
-            }
-            addLaptop();
-        }
-
-        else {
-            String company = input.nextLine();
-            int flag = 0;
-            for (SmartPhone i : Sobj.theSmartPhones) {
-                if (company.equalsIgnoreCase(i.getSellerCompany())) {
-                    System.out.println(Sobj.theSmartPhones.indexOf(i) + i.toString());
-                    flag++;
-                }
-            }
-            if (flag == 0){
-                System.out.println("Smart Phone With Seller Company " + company + " not Found.");
-            }
-            addPhone();
-        }
-    }*/
-
-
-    public void removeFromCart(){
+        System.out.println("Your Shopping Cart:");
 
         for (Product i : shoppingCart){
 
@@ -436,6 +302,12 @@ public class UserOperations {
             System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
 
         }
+
+    }
+
+    public void removeFromCart(){
+
+         seeShoppingCart();
 
         System.out.println("Please Enter The Row Number Of The Product You Want To Remove\n" +
                 "From Your Shopping Cart");
@@ -456,14 +328,7 @@ public class UserOperations {
 
     public void addQuantity(){
 
-        System.out.println("Your Shopping Cart:");
-        for (Product i : shoppingCart){
-
-            System.out.println(shoppingCart.indexOf(i) + i.toStringProduct());
-            System.out.println(shoppingCart.indexOf(i) + i.toStringPhone());
-            System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
-
-        }
+        seeShoppingCart();
 
         System.out.println("Please Enter The Row Number Of The Product You Want To Add Its Quantity");
         int option = input.nextInt();
@@ -493,14 +358,7 @@ public class UserOperations {
 
     public void finalPrice(){
 
-        System.out.println("Your Shopping Cart:");
-        for (Product i : shoppingCart){
-
-            System.out.println(shoppingCart.indexOf(i) + i.toStringProduct());
-            System.out.println(shoppingCart.indexOf(i) + i.toStringPhone());
-            System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
-
-        }
+        seeShoppingCart();
 
         double total = 0;
 
@@ -546,10 +404,11 @@ public class UserOperations {
 
     public void finalizeOrderList(){
 
-
+        Shop shop = new Shop();
 
         for (Product i : SOobj.theProducts){
             user.ListOfOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
+            shop.theWholeOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
         }
         shoppingCart = null;
     }
@@ -576,7 +435,7 @@ public class UserOperations {
             }
         }
         else {
-            System.out.println("Your order is Not confirmed\nPossible Reasons:");
+            System.out.println("Your order is Not confirmed");
         }
 
     }

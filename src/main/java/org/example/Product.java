@@ -54,34 +54,6 @@ public class Product {
         return price;
     }
 
-   /* public void setSellerQuantity(String sellerQuantity) {
-
-        String pricePattern = "^\\d$";
-
-        boolean flag ;
-
-        while (true) {
-
-            flag = sellerQuantity.matches(pricePattern);
-
-            if (flag == false) {
-
-                System.out.println("ERROR\nTRY AGAIN");
-
-                sellerQuantity = input.nextLine();
-
-            } else {
-
-                this.sellerQuantity =Integer.parseInt(sellerQuantity);
-
-                break;
-            }
-
-        }
-
-
-    }*/
-
     public void setSellerQuantity(int sellerQuantity) {
         this.sellerQuantity = sellerQuantity;
     }

@@ -1,8 +1,11 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Shop {
 
     private double shopProfit;
+    ArrayList<String> theWholeOrders = new ArrayList();
 
     public void setShopProfit(double shopProfit) {
         this.shopProfit = shopProfit;
@@ -28,10 +31,16 @@ public class Shop {
     public void Title(){
 
         System.out.println("***********************************************************************");
-        System.out.println("                     WELLCOME TO SAGE ONLINE SHOP");
+        System.out.println("                     WELCOME TO SAGE ONLINE SHOP");
         System.out.println("***********************************************************************");
     }
 
 
 
+    public void showWholeOrders(){
+
+        for (String i : theWholeOrders){
+            System.out.println(i);
+        }
+    }
 }

@@ -25,30 +25,6 @@ public class User extends Admin {
 
     public void setWallet(double wallet) {
         this.wallet = wallet;
-
-      /*  String pricePattern = "^\\d\\.\\d$";
-
-        boolean flag ;
-
-        while (true) {
-
-            flag = wallet.matches(pricePattern);
-
-            if (flag == false) {
-
-                System.out.println("ERROR\nTRY AGAIN");
-
-                wallet = input.nextLine();
-
-            } else {
-
-                this.wallet = Double.parseDouble(wallet);
-
-                break;
-            }
-
-        }*/
-
     }
 
     public double getWallet() {

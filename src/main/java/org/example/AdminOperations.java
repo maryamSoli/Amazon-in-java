@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class AdminOperations {
 
+    public boolean  aloginChecker;
     ArrayList<Admin> theAdmins = new ArrayList();
     ArrayList<String> AcceptedSellerAuthorizingRequests = new ArrayList();
     ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
@@ -28,13 +29,13 @@ public class AdminOperations {
             if (admin.getUserName().equals(i.getUserName()) && admin.getPassWord().equals(i.getPassWord())) {
                 System.out.println("Login Successfully!");
                 flag++;
-                //loginChecker = true;
+                aloginChecker = true;
             }
         }
 
         if (flag == 0){
-            System.out.println("Admin is not Registered.");
-            //loginChecker = false;
+            System.out.println("Admin is not Registered Or Username Or Password Is Not Correct.");
+            aloginChecker = false;
         }
     }
 
