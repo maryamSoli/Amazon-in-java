@@ -17,6 +17,7 @@ public class AdminOperations {
 
 
 
+
     public void addAdmin(){
 
         Admin admin = new Admin();
@@ -26,10 +27,6 @@ public class AdminOperations {
     }
 
     public void login(){
-
-        Admin defAdmin = new Admin();
-        defAdmin.defaultAdmin();
-        theAdmins.add(defAdmin);
 
         System.out.println("Enter Your Username(Or Default Username)");
         String username = input.nextLine();
@@ -59,18 +56,20 @@ public class AdminOperations {
 
         System.out.println("SHOWING THE COMPANIES THAT ASKED FOR PERMISSION");
         SellerOperations requests = new SellerOperations();
-        for (String i : requests.theSellersAuthorizingRequests){
-            System.out.println(i);
-        }
 
-        System.out.println("Enter The Company Names To Confirm(When Finished , Enter 'o'");
+
+        System.out.println("Enter The Company Names To Confirm , When Finished , Enter 'o'");
         System.out.println("ATTENTION : When You Enter 'o' Every Companies Remaining in the Authorizing Requests List Will be Removed Automatically.\nSo Before Entering 'o' Make Sure To Confirm Every Companies You Desire");
 
         while (true){
 
+            for (String i : requests.theSellersAuthorizingRequests){
+                System.out.println(i);
+            }
             int flag = 0;
             String company = input.nextLine();
             if (company.equals("o")){
+                //requests.theSellersAuthorizingRequests.clear();
                 break;
             }
             else {
@@ -86,8 +85,9 @@ public class AdminOperations {
                 else {
                     AcceptedSellerAuthorizingRequests.add(company);
                     requests.theSellersAuthorizingRequests.remove(company);
+
                 }
-                requests.theSellersAuthorizingRequests = null;
+
             }
         }
     }

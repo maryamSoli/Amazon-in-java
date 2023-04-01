@@ -66,7 +66,7 @@ public class Admin {
     public void Admin(){
 
 
-        System.out.println("Enter a Valid E-mail Address\n(A valid E-mail Address Pattern is Like:\n(a to z upper or lower case/numbers/underline(_)/dot(.)@gmail.com");
+        System.out.println("Enter a Valid E-mail Address\nA valid E-mail Address Pattern is Like:\na to z upper or lower case/numbers/underline(_)/dot(.)@gmail.com");
         setEmail(input.nextLine());
 
 

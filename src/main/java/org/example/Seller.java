@@ -46,10 +46,10 @@ public class Seller {
         System.out.println(getPassWord());
     }
 
-  //  @Override
-   /* public String toString() {
+    @Override
+    public String toString() {
         return  "COMPANY NAME:" + companyName +"  " +
-                "PASSWORD:" + passWord + "\n" +
+                "PASSWORD:" + passWord + "  " +
                 "WALLET:" + wallet + "\n" ;
-    }*/
+    }
 }

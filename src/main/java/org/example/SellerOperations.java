@@ -20,7 +20,7 @@ public class SellerOperations {
         int flag = 0;
         for (Seller i : theSellers) {
             if (s.getCompanyName().equalsIgnoreCase(i.getCompanyName())) {
-                System.out.println("Seller With This Company Name Exists");
+                System.out.println("Seller With This Company Name Exists\nSo The Current Information Including Your Company Name And Password Won't Go Inside The Shop's Data Base");
                 flag++;
             }
         }
@@ -76,6 +76,9 @@ public class SellerOperations {
         if (flag != 0) {
             theSellersAuthorizingRequests.add(company);
             System.out.println("The Request has been Sent To the Admins.");
+            for (String i : theSellersAuthorizingRequests){
+                System.out.println(i);
+            }
         } else {
             System.out.println("Company With This Name Doesn't Exists.");
         }

@@ -28,6 +28,11 @@ public class Main {
         int createAccount_LoginChoice;
 
 
+        Admin defAdmin = new Admin();
+        defAdmin.defaultAdmin();
+        aoObj.theAdmins.add(defAdmin);
+
+
         do {
 
             mObj.AccountMenu();
@@ -40,55 +45,48 @@ public class Main {
                     aoObj.login();
                     if (aoObj.aloginChecker == true){
 
-                        mObj.AdminMenu();
-                        adminChoice = input.nextInt();
 
                         do {
 
-                             if (adminChoice==1) {
-                                 aoObj.addAdmin();
-                             }
+                            mObj.AdminMenu();
+                            adminChoice = input.nextInt();
 
-                            else if(adminChoice==2){
-                                uoObj.showUsers();
-                            }
 
-                            else if(adminChoice==3){
-                                soObj.showSellers();
-                            }
+                            switch (adminChoice) {
 
-                            else if(adminChoice==4){
-                                aoObj.showAdmins();
-                            }
-
-                            else if (adminChoice==5){
-                                aoObj.showSellerAuthorizingRequests();
-                            }
-
-                            else if(adminChoice==6){
-                                aoObj.showUsersFundingRequests();
-                            }
-
-                            else if (adminChoice==7){
-                                aoObj.showFinalOrderingRequests();
-                            }
-
-                            else if (adminChoice==8){
-                                uoObj.showProducts();
-                            }
-
-                            else if(adminChoice==9){
-                                shopObj.getShopProfit();
-                            }
-
-                            else if (adminChoice==10){
-                                shopObj.showWholeOrders();
-                            }
-
-                            else {
-                                System.out.println("Such Option Doesn't Exist.Try Again");
-                            }
-
+                                case 1 :
+                                    aoObj.addAdmin();
+                                    break;
+                                case 2:
+                                    uoObj.showUsers();
+                                    break;
+                                case 3:
+                                    soObj.showSellers();
+                                    break;
+                                case 4:
+                                    aoObj.showAdmins();
+                                    break;
+                                case 5:
+                                    aoObj.showSellerAuthorizingRequests();
+                                    break;
+                                case 6:
+                                    aoObj.showUsersFundingRequests();
+                                    break;
+                                case 7:
+                                    aoObj.showFinalOrderingRequests();
+                                    break;
+                                case 8:
+                                    uoObj.showProducts();
+                                    break;
+                                case 9:
+                                    shopObj.getShopProfit();
+                                    break;
+                                case 10:
+                                    shopObj.showWholeOrders();
+                                    break;
+                                default:
+                                    System.out.println("Such Option Doesn't Exist.Try Again");
+                                }
 
                         }
                         while (adminChoice!=200);
@@ -117,10 +115,10 @@ public class Main {
 
                          if (soObj.sloginChecker == true){
 
-                             mObj.SellerMenu();
-                             sellerChoice =input.nextInt();
-
                              do {
+
+                                 mObj.SellerMenu();
+                                 sellerChoice =input.nextInt();
 
                                  if (sellerChoice == 1) {
                                      soObj.AuthorizingRequest();
@@ -143,7 +141,7 @@ public class Main {
                                  }
 
                                  else if (sellerChoice == 4) {
-                                     sObj.getWallet();
+                                     System.out.println(sObj.getWallet());
                                  }
 
                                  else if (sellerChoice == 5) {
@@ -183,10 +181,10 @@ public class Main {
                     }
                     if (uoObj.uloginChecker == true){
 
-                        mObj.UserMenu();
-                        userChoice = input.nextInt();
-
                         do {
+
+                            mObj.UserMenu();
+                            userChoice = input.nextInt();
 
                             if (userChoice==1){
                                 uoObj.editPersonalInfo();
@@ -298,9 +296,14 @@ public class Main {
 
                 default:
                     System.out.println("Thanks For Shopping Here :)");
+                    for (String i : soObj.theSellersAuthorizingRequests){
+                    System.out.println(i);
+                }
             }
         }
         while (accountChoice!=100);
+
+
 
 
 
