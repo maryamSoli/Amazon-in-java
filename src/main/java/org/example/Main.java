@@ -45,9 +45,9 @@ public class Main {
 
                         do {
 
-                            if (adminChoice==1){
-                                aoObj.addAdmin();
-                            }
+                             if (adminChoice==1) {
+                                 aoObj.addAdmin();
+                             }
 
                             else if(adminChoice==2){
                                 uoObj.showUsers();
@@ -89,6 +89,7 @@ public class Main {
                                 System.out.println("Such Option Doesn't Exist.Try Again");
                             }
 
+
                         }
                         while (adminChoice!=200);
 
@@ -106,10 +107,12 @@ public class Main {
                      createAccount_LoginChoice =input.nextInt();
 
                      if (createAccount_LoginChoice==1){
+                         //SellerOperations s = new SellerOperations();
                          soObj.CreateAccount();
                      }
 
                      else {
+                         //SellerOperations s = new SellerOperations();
                          soObj.login();
 
                          if (soObj.sloginChecker == true){
@@ -298,6 +301,7 @@ public class Main {
             }
         }
         while (accountChoice!=100);
+
 
 
 

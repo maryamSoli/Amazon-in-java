@@ -70,11 +70,11 @@ public class Admin {
         setEmail(input.nextLine());
 
 
-        System.out.println("Your Username is : ");
+        System.out.println(" Username is : ");
         setUserName();
         System.out.println(getUserName());
 
-        System.out.println("Your Password is :");
+        System.out.println(" Password is :");
         setPassWord();
         System.out.println(getPassWord());
     }

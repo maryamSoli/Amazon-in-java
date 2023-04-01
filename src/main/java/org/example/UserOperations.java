@@ -48,10 +48,13 @@ public class UserOperations {
 
     public void login(){
 
-        User user = new User();
+        System.out.println("Enter Your User Name");
+        String username = input.nextLine();
+        System.out.println("Enter Your Password");
+        String password = input.nextLine();
         int flag = 0;
         for (User i : theUsers) {
-            if (user.getUserName().equals(i.getUserName()) && user.getPassWord().equals(i.getPassWord())) {
+            if (username.equals(i.getUserName()) && password.equals(i.getPassWord())) {
                 System.out.println("Login Successfully!");
                 flag++;
 

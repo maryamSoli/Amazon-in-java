@@ -16,19 +16,29 @@ public class AdminOperations {
 
 
 
+
     public void addAdmin(){
 
         Admin admin = new Admin();
         admin.Admin();
         theAdmins.add(admin);
+
     }
 
     public void login(){
 
-        Admin admin = new Admin();
+        Admin defAdmin = new Admin();
+        defAdmin.defaultAdmin();
+        theAdmins.add(defAdmin);
+
+        System.out.println("Enter Your Username(Or Default Username)");
+        String username = input.nextLine();
+        System.out.println("Enter Your Password(Or Default Password)");
+        String password = input.nextLine();
+
         int flag = 0;
         for (Admin i : theAdmins) {
-            if (admin.getUserName().equals(i.getUserName()) && admin.getPassWord().equals(i.getPassWord())) {
+            if (username.equals(i.getUserName()) && password.equals(i.getPassWord())) {
                 aloginChecker = true;
                 System.out.println("Login Successfully!");
                 flag++;

@@ -15,26 +15,31 @@ public class SellerOperations {
 
     public void CreateAccount() {
 
-        Seller seller = new Seller();
-        seller.Seller();
+        Seller s = new Seller();
+        s.Seller();
         int flag = 0;
-        for (Seller i : theSellers)
-            if (seller.getCompanyName().equalsIgnoreCase(i.getCompanyName())) {
+        for (Seller i : theSellers) {
+            if (s.getCompanyName().equalsIgnoreCase(i.getCompanyName())) {
                 System.out.println("Seller With This Company Name Exists");
                 flag++;
             }
+        }
         if (flag == 0) {
-            theSellers.add(seller);
+            theSellers.add(s);
+            System.out.println("Account Created!");
         }
     }
 
 
     public void login() {
 
-        Seller seller = new Seller();
+        System.out.println("Enter Your Company Name");
+        String company = input.nextLine();
+        System.out.println("Enter Your Password");
+        String password = input.nextLine();
         int flag = 0;
         for (Seller i : theSellers) {
-            if (seller.getCompanyName().equals(i.getCompanyName()) && seller.getPassWord().equals(i.getPassWord())) {
+            if (company.equals(i.getCompanyName()) && password.equals(i.getPassWord())) {
                 System.out.println("Login Successfully!");
                 flag++;
 
