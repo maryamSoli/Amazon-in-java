@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import java.time.LocalDate;
 
@@ -8,10 +9,7 @@ public class UserOperations {
 
     public boolean  uloginChecker;
     public boolean  OrderConfirmChecker;
-    ArrayList<User> theUsers = new ArrayList();
     ArrayList<Product> shoppingCart = new ArrayList();
-    ArrayList<String> userFunding = new ArrayList();
-    ArrayList<String> orderREQUEST = new ArrayList();
     Scanner input = new Scanner(System.in);
     private double totalPrice;
     SellerOperations SOobj = new SellerOperations();
@@ -33,7 +31,7 @@ public class UserOperations {
         User user = new User();
         user.User();
         int flag = 0;
-        for (User i : theUsers)
+        for (User i : Panels.theUsers)
             if (user.getPhoneNumber().equalsIgnoreCase(i.getPhoneNumber())) {
                 System.out.println("User With This Phone Number Already Exists\n" +
                         "Attention : Having More Than One Account With One Phone Number is NOT Possible!");
@@ -41,7 +39,7 @@ public class UserOperations {
             }
 
         if (flag == 0) {
-            theUsers.add(user);
+            Panels.theUsers.add(user);
         }
     }
 
@@ -53,7 +51,7 @@ public class UserOperations {
         System.out.println("Enter Your Password");
         String password = input.nextLine();
         int flag = 0;
-        for (User i : theUsers) {
+        for (User i : Panels.theUsers) {
             if (username.equals(i.getUserName()) && password.equals(i.getPassWord())) {
                 System.out.println("Login Successfully!");
                 flag++;
@@ -73,14 +71,18 @@ public class UserOperations {
 
 
     public void editPersonalInfo(){ //only after login //Not sure about the function try it later
-
-        System.out.println("First Enter Your Username Then Your Password Please");
         User user = new User();
         int flag =0;
+        String userNameForUpdating = "";
+
+        System.out.println("First Enter Your Username Then Your Password Please");
         String userName = input.nextLine();
         String passWord = input.nextLine();
-        for (User i : theUsers){
+
+        for (User i : Panels.theUsers){
             if (userName.equals(i.getUserName()) && passWord.equals(i.getPassWord())){
+                userNameForUpdating = userName;
+                System.out.println(i.toString());
                 flag++;
             }
         }
@@ -90,36 +92,68 @@ public class UserOperations {
 
         else{
 
-            user.toString();
-            System.out.println("Press 'a' To Change Your Address");
-            System.out.println("Press 'p' To Change Your Phone Number");
-            System.out.println("Press 'e' To Change Your E-Mail");
-            //System.out.println("Press 'q' To Get Out");
+            Scanner in = new Scanner(System.in);
+
+            int choice ;
+
+            do {
+                System.out.println("Press 1 To Change Your Address");
+                System.out.println("Press 2 To Change Your Phone Number");
+                System.out.println("Press 3 To Change Your E-Mail");
+                System.out.println("Press 4 To Get Out");
+
+                choice=input.nextInt();
+
+                switch (choice){
+
+                   case 1:
+
+                       String newAddress;
+                       System.out.println("You Can Change Your Address Now");
+                       newAddress = in.nextLine();
+                       for (User i : Panels.theUsers){
+                           if (userNameForUpdating.equals(i.getUserName())){
+                               i.setAddress(newAddress);
+                               Panels.theUsers.set(Panels.theUsers.indexOf(i),i);
+                               System.out.println(i.toString());
+                           }
+                       }
 
 
-            while (true) {
+                       break;
 
-                char choice = input.next().charAt(0);
-                if (choice == 'a'){
-                    user.setAddress(input.nextLine());
+
+                   case 2:
+                       String newNumber;
+                       System.out.println("You Can Change Your Phone Number Now");
+                       newNumber = in.nextLine();
+                       for (User i : Panels.theUsers){
+                           if (userNameForUpdating.equals(i.getUserName())){
+                               i.setPhoneNumber(newNumber);
+                               Panels.theUsers.set(Panels.theUsers.indexOf(i),i);
+                               System.out.println(i.toString());
+                           }
+                       }
                     break;
-                }
 
-                else if(choice == 'p'){
-                    user.setPhoneNumber(input.nextLine());
-                    break;
-                }
 
-                else if (choice == 'e') {
-                    user.setEmail(input.nextLine());
+                   case 3:
+                       String newEmail;
+                       System.out.println("You Can Change Your E-mail Now");
+                       newEmail = in.nextLine();
+                       for (User i : Panels.theUsers){
+                           if (userNameForUpdating.equals(i.getUserName())){
+                               i.setEmail(newEmail);
+                               Panels.theUsers.set(Panels.theUsers.indexOf(i),i);
+                               System.out.println(i.toString());
+                           }
+                       }
                     break;
-                }
 
-                else {
-                    break;
-                }
+               }
 
             }
+            while (choice!=4);
 
             System.out.println("Changes Submitted Successfully!");
         }
@@ -129,8 +163,8 @@ public class UserOperations {
 
         System.out.println("Enter The Row Number Of Your Wanted Product To Add To Your Cart");
         int option = input.nextInt();
-        for (Product i : SOobj.theProducts){
-            if (option == SOobj.theProducts.indexOf(i)){
+        for (Product i : Panels.theProducts){
+            if (option == Panels.theProducts.indexOf(i)){
                 shoppingCart.add(i);
             }
         }
@@ -138,13 +172,19 @@ public class UserOperations {
 
     public void comment(){
 
+        String comment;
+        //int flag=0;
         System.out.println("Enter The Row Number Of Your Wanted Product To Leave a Comment");
         int option = input.nextInt();
-        for (Product i : SOobj.theProducts){
-            if (option == SOobj.theProducts.indexOf(i)){
-                i.comments.add(input.nextLine());
+        for (Product i : Panels.theProducts){
+            if (option == Panels.theProducts.indexOf(i)){
+               // flag++;
+                System.out.println("Leave A Comment Please");
+                 comment = input.nextLine();
+                i.comments.add(comment);
             }
         }
+
     }
 
 
@@ -177,8 +217,10 @@ public class UserOperations {
 
                     if (electronicsChoice == 1) {
                         System.out.println("Here You Can See The Laptops:");
-                        for (Product i : SOobj.theProducts){
-                            System.out.println(SOobj.theProducts.indexOf(i) + i.toStringLaptop());
+                        for (Product i : Panels.theProducts) {
+                            if (Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())) {
+                                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                            }
                         }
 
                         addToCart_LeaveCommentChoice();
@@ -186,8 +228,11 @@ public class UserOperations {
 
                     else {
                         System.out.println("Here You Can See The Smart Phones:");
-                        for (Product i : SOobj.theProducts){
-                            System.out.println(SOobj.theProducts.indexOf(i) + i.toStringPhone());
+                        for (Product i : Panels.theProducts) {
+                            if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())) {
+                                System.out.println(Panels.theProducts.indexOf(i));
+                                i.toStringPhone();
+                            }
                         }
                         addToCart_LeaveCommentChoice();
                     }
@@ -197,13 +242,14 @@ public class UserOperations {
 
                 case 2:
 
+                    Scanner in = new Scanner(System.in);
                     System.out.println("Please Choose The Category You Want\n" +
                             "<<Clothes>> <<Bags>> <<Shoes>> <<Books>>\n" +
                             "<<Cosmetics>> <<Perfume>> <<Jewelery>> <<House Furniture>> <<Musical Instruments>>");
-                    String category = input.nextLine();
-                    for (Product i : SOobj.theProducts){
+                    String category = in.nextLine();
+                    for (Product i : Panels.theProducts){
                         if (category.equalsIgnoreCase(i.getCategory())){
-                            System.out.println(SOobj.theProducts.indexOf(i) + i.toString());
+                            System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
                         }
                     }
                     addToCart_LeaveCommentChoice();
@@ -221,13 +267,14 @@ public class UserOperations {
 
         String name = input.nextLine();
         int flag = 0;
-        for (Product i : SOobj.theProducts ){
+        for (Product i : Panels.theProducts ){
 
             if (i.getName().equalsIgnoreCase(name)){
 
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringPhone());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringLaptop());
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+                System.out.println(Panels.theProducts.indexOf(i));
+                i.toStringPhone();
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
 
                 flag++;
 
@@ -249,13 +296,14 @@ public class UserOperations {
 
         String brand = input.nextLine();
         int flag = 0;
-        for (Product i : SOobj.theProducts ){
+        for (Product i : Panels.theProducts ){
 
             if (i.getBrand().equalsIgnoreCase(brand)){
 
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringPhone());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringLaptop());
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+                System.out.println(Panels.theProducts.indexOf(i));
+                i.toStringPhone();
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
 
                 flag++;
 
@@ -274,13 +322,14 @@ public class UserOperations {
 
         String company = input.nextLine();
         int flag = 0;
-        for (Product i : SOobj.theProducts ){
+        for (Product i : Panels.theProducts ){
 
             if (i.getSellerCompany().equalsIgnoreCase(company)){
 
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringPhone());
-                System.out.println(SOobj.theProducts.indexOf(i) + i.toStringLaptop());
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+                System.out.println(Panels.theProducts.indexOf(i));
+                i.toStringPhone();
+                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
 
                 flag++;
 
@@ -302,7 +351,8 @@ public class UserOperations {
         for (Product i : shoppingCart){
 
             System.out.println(shoppingCart.indexOf(i) + i.toStringProduct());
-            System.out.println(shoppingCart.indexOf(i) + i.toStringPhone());
+            System.out.println(shoppingCart.indexOf(i));
+            i.toStringPhone();
             System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
 
         }
@@ -384,7 +434,7 @@ public class UserOperations {
         }
         //add 90% to sellers wallet
         for (Product i : shoppingCart){
-            for (Seller j : SOobj.theSellers){
+            for (Seller j : Panels.theSellers){
                 if (i.getSellerCompany().equalsIgnoreCase(j.getCompanyName())){
                     j.setWallet(j.getWallet()+(0.9*i.getPrice()));
                 }
@@ -410,7 +460,7 @@ public class UserOperations {
 
         Shop shop = new Shop();
 
-        for (Product i : SOobj.theProducts){
+        for (Product i : Panels.theProducts){
             user.ListOfOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
             shop.theWholeOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
         }
@@ -425,13 +475,13 @@ public class UserOperations {
 
         int flag = 0;
 
-        for (String i : AuthorizedRequests.AcceptedOrderListsRequests) {
+       /* for (String i : AuthorizedRequests.AcceptedOrderListsRequests) {
 
             if (password.equals(i)) {
 
-                flag++;
-            }
-        }
+
+
+        }*/flag++;
 
         if (flag != 0) {
             for (String i : user.ListOfOrders){
@@ -453,7 +503,7 @@ public class UserOperations {
         System.out.println("Enter Your Password To Send The Request");
 
         String password = input.nextLine();
-        for (User i : theUsers) {
+        for (User i : Panels.theUsers) {
 
             if (password.equalsIgnoreCase(i.getPassWord())) {
 
@@ -463,7 +513,7 @@ public class UserOperations {
 
         if (flag != 0) {
 
-            userFunding.add(password);
+            Panels.userFunding.add(password);
             System.out.println("The Request has been Sent To the Admins.");
         } else {
 
@@ -478,7 +528,7 @@ public class UserOperations {
         System.out.println("Enter Your Password To Send The Order Request");
 
         String password = input.nextLine();
-        for (User i : theUsers) {
+        for (User i : Panels.theUsers) {
 
             if (password.equals(i.getPassWord())) {
 
@@ -488,7 +538,7 @@ public class UserOperations {
 
         if (flag != 0) {
 
-            orderREQUEST.add(password);
+            Panels.orderREQUEST.add(password);
             System.out.println("The Request has been Sent To the Admins.");
         } else {
 
@@ -498,13 +548,13 @@ public class UserOperations {
 
 
     public void showUsers(){
-        for (User i : theUsers){
+        for (User i : Panels.theUsers){
             System.out.println(i.toString());
         }
     }
 
     public void showProducts(){
-        for (Product i : SOobj.theProducts){
+        for (Product i : Panels.theProducts){
             System.out.println(i);
         }
     }

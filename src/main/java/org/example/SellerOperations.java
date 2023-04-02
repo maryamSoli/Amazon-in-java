@@ -7,9 +7,6 @@ public class SellerOperations {
 
     public boolean  sloginChecker;
     public boolean  authorizedSellersChecker;
-    ArrayList<Seller> theSellers = new ArrayList();
-    ArrayList<String> theSellersAuthorizingRequests = new ArrayList();
-    ArrayList<Product> theProducts = new ArrayList();
     Scanner input = new Scanner(System.in);
 
 
@@ -18,14 +15,14 @@ public class SellerOperations {
         Seller s = new Seller();
         s.Seller();
         int flag = 0;
-        for (Seller i : theSellers) {
+        for (Seller i : Panels.theSellers) {
             if (s.getCompanyName().equalsIgnoreCase(i.getCompanyName())) {
                 System.out.println("Seller With This Company Name Exists\nSo The Current Information Including Your Company Name And Password Won't Go Inside The Shop's Data Base");
                 flag++;
             }
         }
         if (flag == 0) {
-            theSellers.add(s);
+            Panels.theSellers.add(s);
             System.out.println("Account Created!");
         }
     }
@@ -38,7 +35,7 @@ public class SellerOperations {
         System.out.println("Enter Your Password");
         String password = input.nextLine();
         int flag = 0;
-        for (Seller i : theSellers) {
+        for (Seller i : Panels.theSellers) {
             if (company.equals(i.getCompanyName()) && password.equals(i.getPassWord())) {
                 System.out.println("Login Successfully!");
                 flag++;
@@ -67,16 +64,16 @@ public class SellerOperations {
             }
         }
         if (flag2 == 0) {*/
-        for (Seller i : theSellers) {
+        for (Seller i : Panels.theSellers) {
             if (company.equalsIgnoreCase(i.getCompanyName())) {
                 flag++;
             }
         }
 
         if (flag != 0) {
-            theSellersAuthorizingRequests.add(company);
+            Panels.theSellersAuthorizingRequests.add(company);
             System.out.println("The Request has been Sent To the Admins.");
-            for (String i : theSellersAuthorizingRequests){
+            for (String i : Panels.theSellersAuthorizingRequests){
                 System.out.println(i);
             }
         } else {
@@ -93,9 +90,8 @@ public class SellerOperations {
 
         System.out.println("To See If You are Authorized Please Enter The Name Of Your Company");
         String company = input.nextLine();
-        AdminOperations AuthorizedRequests = new AdminOperations();
         int flag = 0;
-        for (String i : AuthorizedRequests.AcceptedSellerAuthorizingRequests) {
+        for (String i : Panels.AcceptedSellerAuthorizingRequests) {
             if (company.equalsIgnoreCase(i)) {
                 flag++;
             }
@@ -147,7 +143,7 @@ public class SellerOperations {
                         Product laptop = new Product();
                         laptop.Laptop();// calling Laptop method from Laptop class
                         int flag = 0;
-                        for (Product i : theProducts) {
+                        for (Product i : Panels.theProducts) {
                             if (laptop.equals(i)) {
                                 i.addQuantityByOne();
                                 flag++;
@@ -155,14 +151,14 @@ public class SellerOperations {
                         }
 
                         if (flag == 0) {
-                            theProducts.add(laptop); // add laptop
+                            Panels.theProducts.add(laptop); // add laptop
                         }
 
                     } else { // if phone is chosen
                         Product phone = new Product();
                         phone.SmartPhone();// calling SmartPhone method from SmartPhone class
                         int flag = 0;
-                        for (Product i : theProducts) {
+                        for (Product i : Panels.theProducts) {
                             if (phone.equals(i)) {
                                 i.addQuantityByOne();
                                 flag++;
@@ -170,7 +166,7 @@ public class SellerOperations {
                         }
 
                         if (flag == 0) {
-                            theProducts.add(phone);
+                            Panels.theProducts.add(phone);
                         }
                     }
 
@@ -181,7 +177,7 @@ public class SellerOperations {
                     Product product = new Product();
                     product.Product();
                     int flag = 0;
-                    for (Product i : theProducts) {
+                    for (Product i : Panels.theProducts) {
                         if (product.equals(i)) {
                             // i.addQuantityByOne();
                             flag++;
@@ -189,7 +185,7 @@ public class SellerOperations {
                     }
 
                     if (flag == 0) {
-                        theProducts.add(product);
+                        Panels.theProducts.add(product);
                     }
 
                     break;
@@ -202,7 +198,7 @@ public class SellerOperations {
 
     public void showSellers(){
 
-        for (Seller i : theSellers){
+        for (Seller i : Panels.theSellers){
             System.out.println(i.toString());
         }
     }

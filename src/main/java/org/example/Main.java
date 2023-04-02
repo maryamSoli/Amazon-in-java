@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +20,6 @@ public class Main {
 
 
 
-
         int accountChoice;
         int adminChoice;
         int userChoice;
@@ -30,10 +30,10 @@ public class Main {
 
         Admin defAdmin = new Admin();
         defAdmin.defaultAdmin();
-        aoObj.theAdmins.add(defAdmin);
+        Panels.theAdmins.add(defAdmin);
 
 
-        do {
+      /*  do {
 
             mObj.AccountMenu();
             accountChoice = input.nextInt();
@@ -296,17 +296,34 @@ public class Main {
 
                 default:
                     System.out.println("Thanks For Shopping Here :)");
-                    for (String i : soObj.theSellersAuthorizingRequests){
+                   /* for (String i : soObj.theSellersAuthorizingRequests){
                     System.out.println(i);
                 }
             }
         }
-        while (accountChoice!=100);
+        while (accountChoice!=100);*/
 
 
 
 
 
+        while (true){
+
+            System.out.println("0:out  1:add   2:see");
+            int ch = input.nextInt();
+
+            if (ch == 0){
+                break;
+            }
+
+            else if (ch == 1){
+                soObj.addProduct();
+            }
+
+            else{
+                uoObj.addToCart_LeaveComment();
+            }
+        }
 
 
 

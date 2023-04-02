@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class AdminOperations {
 
     public boolean  aloginChecker;
-    ArrayList<Admin> theAdmins = new ArrayList();
-    ArrayList<String> AcceptedSellerAuthorizingRequests = new ArrayList();
-    ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
+
+   // ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
     Scanner input = new Scanner(System.in);
 
-    User user = new User();
+    //User user = new User();
+
 
 
 
@@ -22,7 +22,7 @@ public class AdminOperations {
 
         Admin admin = new Admin();
         admin.Admin();
-        theAdmins.add(admin);
+        Panels.theAdmins.add(admin);
 
     }
 
@@ -34,7 +34,7 @@ public class AdminOperations {
         String password = input.nextLine();
 
         int flag = 0;
-        for (Admin i : theAdmins) {
+        for (Admin i : Panels.theAdmins) {
             if (username.equals(i.getUserName()) && password.equals(i.getPassWord())) {
                 aloginChecker = true;
                 System.out.println("Login Successfully!");
@@ -55,25 +55,25 @@ public class AdminOperations {
     public void showSellerAuthorizingRequests(){
 
         System.out.println("SHOWING THE COMPANIES THAT ASKED FOR PERMISSION");
-        SellerOperations requests = new SellerOperations();
 
+        for (String i : Panels.theSellersAuthorizingRequests){
+            System.out.println(i);
+        }
 
         System.out.println("Enter The Company Names To Confirm , When Finished , Enter 'o'");
         System.out.println("ATTENTION : When You Enter 'o' Every Companies Remaining in the Authorizing Requests List Will be Removed Automatically.\nSo Before Entering 'o' Make Sure To Confirm Every Companies You Desire");
 
         while (true){
 
-            for (String i : requests.theSellersAuthorizingRequests){
-                System.out.println(i);
-            }
+
             int flag = 0;
             String company = input.nextLine();
             if (company.equals("o")){
-                //requests.theSellersAuthorizingRequests.clear();
+                Panels.theSellersAuthorizingRequests.clear();
                 break;
             }
             else {
-                for (String i : requests.theSellersAuthorizingRequests){
+                for (String i : Panels.theSellersAuthorizingRequests){
                     if (company.equalsIgnoreCase(i)){
                         flag++;
                     }
@@ -83,8 +83,8 @@ public class AdminOperations {
                 }
 
                 else {
-                    AcceptedSellerAuthorizingRequests.add(company);
-                    requests.theSellersAuthorizingRequests.remove(company);
+                    Panels.AcceptedSellerAuthorizingRequests.add(company);
+                    Panels.theSellersAuthorizingRequests.remove(company);
 
                 }
 
@@ -97,7 +97,7 @@ public class AdminOperations {
 
             System.out.println("SHOWING THE USERS THAT ASKED FOR FUND");
             UserOperations request = new UserOperations();
-            for (String i : request.userFunding){
+            for (String i : Panels.userFunding){
                 System.out.println(i);
             }
             System.out.println("Enter The Users Passwords To Confirm(When Finished , Enter 'o'");
@@ -114,11 +114,11 @@ public class AdminOperations {
 
                 else {
 
-                    for (String i : request.userFunding){
+                    for (String i : Panels.userFunding){
 
                         if (password.equalsIgnoreCase(i)){
 
-                            for (User j : user.theUsers){
+                            for (User j : Panels.theUsers){
                                 if (password.equals(j.getPassWord())){
                                     j.setWallet(j.getWallet()+input.nextDouble());
                                 }
@@ -133,10 +133,10 @@ public class AdminOperations {
                     }
 
                     else {
-                        request.userFunding.remove(password);
+                        Panels.userFunding.remove(password);
                     }
 
-                    request.userFunding = null;
+                    Panels.userFunding.clear();
                 }
             }
     }
@@ -145,8 +145,8 @@ public class AdminOperations {
     public void showFinalOrderingRequests() {
 
         System.out.println("SHOWING THE USERS THAT ASKED FOR FINALIZING ORDERS");
-        UserOperations orequest = new UserOperations();
-        for (String i : orequest.orderREQUEST) {
+        //UserOperations orequest = new UserOperations();
+        for (String i : Panels.orderREQUEST) {
             System.out.println(i);
             }
 
@@ -163,7 +163,7 @@ public class AdminOperations {
 
             else {
 
-                for (String i : orequest.orderREQUEST){
+                for (String i : Panels.orderREQUEST){
                     if (password.equals(i)){
                         flag++;
                     }
@@ -174,11 +174,11 @@ public class AdminOperations {
                 }
 
                 else {
-                    AcceptedOrderListsRequests.add(password);
-                    orequest.orderREQUEST.remove(password);
+                    //AcceptedOrderListsRequests.add(password);
+                    Panels.orderREQUEST.remove(password);
                 }
 
-                orequest.orderREQUEST = null;
+                Panels.orderREQUEST.clear();
 
             }
 
@@ -187,7 +187,7 @@ public class AdminOperations {
 
 
     public void showAdmins(){
-        for (Admin i : theAdmins){
+        for (Admin i : Panels.theAdmins){
             System.out.println(i.toString());
         }
     }

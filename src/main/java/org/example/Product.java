@@ -34,9 +34,10 @@ public class Product {
     private String CameraQuality;
     private String StorageCapacity;
 
-
     ArrayList<String> comments = new ArrayList();
+
     Scanner input = new Scanner(System.in);
+    //Scanner input = new Scanner(System.in);
 
     public void setName(String name) {
         this.name = name;
@@ -254,6 +255,8 @@ public class Product {
 
     public void Product(){
 
+        Scanner input = new Scanner(System.in);
+
         System.out.println("HERE YOU CAN ADD YOUR PRODUCT\nIF YOUR PRODUCT DOESN'T INCLUDE ANY OF THE FOLLOWING ITEMS LEAVE IT EMPTY");
 
         System.out.println("Dear Seller Please Enter The Name Of Your Company ");
@@ -316,6 +319,7 @@ public class Product {
 
     public void Laptop(){
 
+
         System.out.println("Dear Seller Please Enter The Name Of Your Company ");
         setSellerCompany(input.nextLine());
 
@@ -352,17 +356,18 @@ public class Product {
 
     public void SmartPhone(){
 
+
         System.out.println("Dear Seller Please Enter The Name Of Your Company ");
         setSellerCompany(input.nextLine());
 
         System.out.println("Please Enter the Name of Your Product");
         setName(input.nextLine());
 
-        System.out.println("Please Enter the Price");
-        setPrice(input.nextDouble());
-
         System.out.println("Please Enter the Brand");
         setBrand(input.nextLine());
+
+        System.out.println("Please Enter the Price");
+        setPrice(input.nextDouble());
 
         System.out.println("Please Enter the Producing Year");
         setProducingYear(input.nextLine());
@@ -417,7 +422,7 @@ public class Product {
 
     public String toStringLaptop(){
 
-        return  "CATEGORY:" + category + "  " +
+        return  "CATEGORY:" + " laptop" + "  " +
                 "NAME:" + name +"  " +
                 "BRAND:" + brand + "  " +
                 "PRICE:" + price + "  " +
@@ -432,25 +437,30 @@ public class Product {
                 "COMMENTS" + comments + "\n";
     }
 
-    public String toStringPhone(){
+    public void toStringPhone(){
 
-        return  "CATEGORY:" + category + "  " +
-                "NAME:" + name +"  " +
-                "BRAND:" + brand + "  " +
-                "PRICE:" + price + "  " +
-                "RAM:" + RAM + "  " +
-                "COLOR:" + color + "  " +
-                "OS:" + OS + "  " +
-                "BATTERY LIFE:" + BatteryLife + "  " +
-                "PRODUCING YEAR:" + producingYear + "  " +
-                "CAMERA QUALITY:" + CameraQuality + "  " +
-                "STORAGE CAPACITY:" + StorageCapacity + "  " +
-                "AVAILABLE QUANTITY" + sellerQuantity + "  " +
-                "WANTED QUANTITY" + userQuantity + "  " +
-                "COMMENTS" + comments + "\n";
+         System.out.println("CATEGORY:" + "phone" + "  " +
+                 "NAME:" + name +"  " +
+                 "BRAND:" + brand + "  " +
+                 "PRICE:" + price + "  " +
+                 "RAM:" + RAM + "  " +
+                 "COLOR:" + color + "  " +
+                 "OS:" + OS + "  " +
+                 "BATTERY LIFE:" + BatteryLife + "  " +
+                 "PRODUCING YEAR:" + producingYear + "  " +
+                 "CAMERA QUALITY:" + CameraQuality + "  " +
+                 "STORAGE CAPACITY:" + StorageCapacity + "  " +
+                 "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
+                 "WANTED QUANTITY:" + userQuantity + "  " + "COMMENTS:" );
+                 showComments();
     }
 
 
+    public void showComments(){
+        for (String i : comments){
+            System.out.println(i);
+        }
+    }
     public void addQuantityByOne(){
 
         this.sellerQuantity++;

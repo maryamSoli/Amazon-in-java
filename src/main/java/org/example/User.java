@@ -79,6 +79,7 @@ public class User extends Admin {
         super.toString();
         return  "PHONE NUMBER:" + phoneNumber +"  " +
                 "ADDRESS:" + address + "  " +
+                "E-MAIL:" + super.getEmail() + "  " +
                 "USERNAME:" + super.getUserName() +"  " +
                 "PASSWORD:" + super.getPassWord() + "\n" ;
     }
