@@ -4,16 +4,6 @@ import java.util.ArrayList;
 
 public class Shop {
 
-    private double shopProfit;
-    //ArrayList<String> theWholeOrders = new ArrayList();
-
-    public void setShopProfit(double shopProfit) {
-        this.shopProfit = shopProfit;
-    }
-
-    public double getShopProfit() {
-        return shopProfit;
-    }
 
     public void ContactMenu(){
 

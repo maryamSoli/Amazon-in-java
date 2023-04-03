@@ -79,10 +79,10 @@ public class Main {
                                     uoObj.showProducts();
                                     break;
                                 case 9:
-                                    shopObj.getShopProfit();
+                                    System.out.println(Panels.totalProfit);
                                     break;
                                 case 10:
-                                    shopObj.showWholeOrders();
+                                    uoObj.seeWholeOrdersList();
                                     break;
                                   }
 
@@ -229,7 +229,7 @@ public class Main {
 
                                         case 4:
                                             uoObj.OrderRequest();
-                                            /*uoObj.OrderRequest();
+                                            uoObj.OrderRequest();
                                             uoObj.authorizedOrders();
 
                                             if (uoObj.OrderConfirmChecker==true){
@@ -239,7 +239,7 @@ public class Main {
 
                                             else {
                                                 System.out.println("Your Order Hasn't Been Confirmed By Admins");
-                                            }*/
+                                            }
                                             break;
 
                                         case 5:
@@ -263,7 +263,7 @@ public class Main {
                             }
 
                             else if (userChoice==8){
-                                uoObj.showOrders();
+                                uoObj.seeFinalOrderList();
                             }
 
                             else if(userChoice==9){

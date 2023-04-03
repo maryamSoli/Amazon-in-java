@@ -16,5 +16,6 @@ public class Panels {
    public static ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
    //public static ArrayList<String> commentss = new ArrayList();
    public static ArrayList<String> theWholeOrders = new ArrayList();
+   public static double totalProfit;
 
 }

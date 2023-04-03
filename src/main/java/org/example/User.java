@@ -16,7 +16,7 @@ public class User extends Admin {
     private UUID uuid;
     ArrayList<User> theUsers = new ArrayList();
 
-    ArrayList<String> ListOfOrders = new ArrayList();
+
     Scanner input = new Scanner(System.in);
 
     public void setAddress(String address) {this.address = address;}

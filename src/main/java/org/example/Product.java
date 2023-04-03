@@ -263,7 +263,7 @@ public class Product {
         setSellerCompany(input.nextLine());
 
         System.out.println("Please Enter the Category");
-        System.out.println("The Categories:\n<<Electronics>> <<Clothes>> <<Bags>> <<Shoes>> <<Books>> <<Cosmetics>> <<Perfume>> <<Jewelery>> <<House Furniture>> <<Musical Instruments>>");
+        System.out.println("The Categories:\n<<Clothes>> <<Bags>> <<Shoes>> <<Books>> <<Cosmetics>> <<Perfume>> <<Jewelery>> <<House Furniture>> <<Musical Instruments>>");
         setCategory(input.nextLine());
 
         System.out.println("Please Enter the Name of Your Product");
@@ -274,6 +274,8 @@ public class Product {
 
         System.out.println("Please Enter the Brand (For Books Enter Publisher)");
         setBrand(input.nextLine());
+
+        input.nextLine();
 
         System.out.println("Please Enter the Author Name (Only For Books)");
         setAuthorName(input.nextLine());
@@ -286,6 +288,8 @@ public class Product {
 
         System.out.println("Please Enter the Color");
         setColor(input.nextLine());
+
+        input.nextLine();
 
         System.out.println("Please Enter the Gender");
         setGender(input.nextLine());
@@ -332,11 +336,15 @@ public class Product {
         System.out.println("Please Enter the Brand");
         setBrand(input.nextLine());
 
+        input.nextLine();
+
         System.out.println("Please Enter the Quantity");
         setSellerQuantity(input.nextInt());
 
         System.out.println("Please Enter the Producing Year");
         setProducingYear(input.nextLine());
+
+        input.nextLine();
 
         System.out.println("Please Enter the RAM");
         setRAM(input.nextLine());
@@ -378,6 +386,8 @@ public class Product {
 
         System.out.println("Please Enter the Color");
         setColor(input.nextLine());
+
+        input.nextLine();
 
         System.out.println("Please Enter the OS");
         setOS(input.nextLine());
@@ -445,9 +455,9 @@ public class Product {
                 "COMMENTS" + comments + "\n";
     }
 
-    public void toStringPhone(){
+    public String toStringPhone(){
 
-         System.out.println("CATEGORY:" + "phone" + "  " +
+        return   "CATEGORY:" + "phone" + "  " +
                  "NAME:" + name +"  " +
                  "BRAND:" + brand + "  " +
                  "PRICE:" + price + "  " +
@@ -459,8 +469,9 @@ public class Product {
                  "CAMERA QUALITY:" + CameraQuality + "  " +
                  "STORAGE CAPACITY:" + StorageCapacity + "  " +
                  "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
-                 "WANTED QUANTITY:" + userQuantity + "  " + "COMMENTS:" );
-                 showComments();
+                 "WANTED QUANTITY:" + userQuantity + "  " +
+                "COMMENTS:" + comments + "\n";
+
     }
 
     public String toString(){
@@ -496,12 +507,6 @@ public class Product {
 
     }
 
-
-    public void showComments(){
-        for (String i : comments){
-            System.out.println(i);
-        }
-    }
     public void addQuantityByOne(){
 
         this.sellerQuantity++;

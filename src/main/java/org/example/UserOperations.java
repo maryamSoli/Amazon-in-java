@@ -10,12 +10,13 @@ public class UserOperations {
     public boolean  uloginChecker;
     public boolean  OrderConfirmChecker;
     ArrayList<Product> shoppingCart = new ArrayList();
+    ArrayList<Product> ListOfOrders = new ArrayList();
     Scanner input = new Scanner(System.in);
     private double totalPrice;
     SellerOperations SOobj = new SellerOperations();
     Seller Sobj = new Seller();
     Shop shop = new Shop();
-    User user = new User();
+   // User user = new User();
     LocalDate localDate = LocalDate.now();
 
     public void setTotalPrice(double totalPrice) {
@@ -175,7 +176,9 @@ public class UserOperations {
         String comment;
         //int flag=0;
         System.out.println("Enter The Row Number Of Your Wanted Product To Leave a Comment");
+        //input.nextLine();
         int option = input.nextInt();
+        input.nextLine();
         for (Product i : Panels.theProducts){
             if (option == Panels.theProducts.indexOf(i)){
                // flag++;
@@ -269,6 +272,7 @@ public class UserOperations {
 
         System.out.println("Please Enter The Name Of Product To Search By Name");
         String name = input.nextLine();
+        input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
@@ -308,6 +312,7 @@ public class UserOperations {
 
         System.out.println("Please Enter The Brand To Search By Brand");
         String brand = input.nextLine();
+        input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
@@ -343,6 +348,7 @@ public class UserOperations {
 
         System.out.println("Please Enter The Seller Company To Search By Seller Company");
         String company = input.nextLine();
+        input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
@@ -484,31 +490,77 @@ public class UserOperations {
         }
 
         //add 10% to shop profit
-        shop.setShopProfit(shop.getShopProfit()+(0.1*getTotalPrice()));
+        Panels.totalProfit+=(0.1*getTotalPrice());
 
 
         //remove from user wallet
-        if (user.getWallet()-getTotalPrice() < 0 ){
-            System.out.println("The Amount Of Money In Your Wallet Is Not Enough.\n" +
-                    "Please Send a Funding Request To the Administration.");
+        int flag = 0;
+        System.out.println("Enter Password");
+        String pass = input.nextLine();
+        for (User i : Panels.theUsers){
+            if (pass.equals(i.getPassWord())){
+                if (i.getWallet()-getTotalPrice()<0){
+                    System.out.println("The Amount Of Money In Your Wallet Is Not Enough.\n" +
+                            "Please Send a Funding Request To the Administration.");
+                }
+                else {
+                    i.setWallet(i.getWallet()-getTotalPrice());
+                }
+                System.out.println(i.getWallet());
+                flag++;
+            }
         }
-        else {
-            user.setWallet(user.getWallet()-getTotalPrice());
+        if (flag==0){
+            System.out.println("User Doesn't Exist");
         }
 
     }
 
-    public void finalizeOrderList(){
-
-
-
-        for (Product i : Panels.theProducts){
-            user.ListOfOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
-             Panels.theWholeOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
+    public void finalizeOrderList() {
+        int flag = 0;
+        System.out.println("Enter Password");
+        String pass = input.nextLine();
+        for (User i : Panels.theUsers) {
+            if (pass.equals(i.getPassWord())) {
+                for (Product j : shoppingCart) {
+                    ListOfOrders.add(j);
+                    Panels.theWholeOrders.add(j.toString() + localDate.toString() + getTotalPrice() + i.getUserName());
+                    flag++;
+                }
+            }
         }
+        if (flag == 0) {
+            System.out.println("such user does not exist");
+        }
+
         shoppingCart.clear();
     }
 
+
+    public void seeFinalOrderList() {
+
+        int flag = 0;
+        System.out.println("Enter Password");
+        String pass = input.nextLine();
+        for (User i : Panels.theUsers) {
+            if (pass.equals(i.getPassWord())) {
+                for (Product j : ListOfOrders) {
+                    System.out.println(j + localDate.toString() + getTotalPrice() + i.getUserName());
+                    flag++;
+                }
+            }
+        }
+
+        if (flag==0) {
+            System.out.println("such user does not exist");
+        }
+    }
+
+    public void seeWholeOrdersList(){
+        for (String i : Panels.theWholeOrders){
+            System.out.println(i);
+        }
+    }
     public void authorizedOrders(){
 
 
@@ -628,11 +680,6 @@ public class UserOperations {
         }
     }
 
-    public void showOrders(){
-        for (String i : user.ListOfOrders){
-            System.out.println(i);
-        }
-    }
 
 
 }
