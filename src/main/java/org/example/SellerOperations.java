@@ -73,9 +73,9 @@ public class SellerOperations {
         if (flag != 0) {
             Panels.theSellersAuthorizingRequests.add(company);
             System.out.println("The Request has been Sent To the Admins.");
-            for (String i : Panels.theSellersAuthorizingRequests){
+           /* for (String i : Panels.theSellersAuthorizingRequests){
                 System.out.println(i);
-            }
+            }*/
         } else {
             System.out.println("Company With This Name Doesn't Exists.");
         }

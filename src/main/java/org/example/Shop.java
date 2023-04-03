@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Shop {
 
     private double shopProfit;
-    ArrayList<String> theWholeOrders = new ArrayList();
+    //ArrayList<String> theWholeOrders = new ArrayList();
 
     public void setShopProfit(double shopProfit) {
         this.shopProfit = shopProfit;
@@ -39,7 +39,7 @@ public class Shop {
 
     public void showWholeOrders(){
 
-        for (String i : theWholeOrders){
+        for (String i : Panels.theWholeOrders){
             System.out.println(i);
         }
     }

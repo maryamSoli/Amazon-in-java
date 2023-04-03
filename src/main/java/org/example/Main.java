@@ -33,7 +33,7 @@ public class Main {
         Panels.theAdmins.add(defAdmin);
 
 
-      /*  do {
+        do {
 
             mObj.AccountMenu();
             accountChoice = input.nextInt();
@@ -84,9 +84,7 @@ public class Main {
                                 case 10:
                                     shopObj.showWholeOrders();
                                     break;
-                                default:
-                                    System.out.println("Such Option Doesn't Exist.Try Again");
-                                }
+                                  }
 
                         }
                         while (adminChoice!=200);
@@ -194,10 +192,6 @@ public class Main {
                                 uoObj.addToCart_LeaveComment();
                             }
 
-                            else if(userChoice==3){
-                                uoObj.showProducts();
-                            }
-
                             else if(userChoice==4){
                                 uoObj.searchByBrand();
                             }
@@ -235,6 +229,7 @@ public class Main {
 
                                         case 4:
                                             uoObj.OrderRequest();
+                                            /*uoObj.OrderRequest();
                                             uoObj.authorizedOrders();
 
                                             if (uoObj.OrderConfirmChecker==true){
@@ -242,6 +237,20 @@ public class Main {
                                                 uoObj.finalizeOrderWallet();
                                             }
 
+                                            else {
+                                                System.out.println("Your Order Hasn't Been Confirmed By Admins");
+                                            }*/
+                                            break;
+
+                                        case 5:
+                                            uoObj.authorizedOrders();
+                                            break;
+
+                                        case 6:
+                                            if (uoObj.OrderConfirmChecker==true){
+                                                uoObj.finalizeOrderList();
+                                                uoObj.finalizeOrderWallet();
+                                            }
                                             else {
                                                 System.out.println("Your Order Hasn't Been Confirmed By Admins");
                                             }
@@ -261,17 +270,18 @@ public class Main {
                                 uoObj.fundRequest();
                             }
 
+                            else if (userChoice==12){
+                                uoObj.acceptedFunds();
+                            }
+
                             else if (userChoice==10){
-                                uObj.getWallet();
+                                aoObj.UserSeeWallet();
                             }
 
                             else if (userChoice==11){
                                 shopObj.ContactMenu();
                             }
 
-                            else {
-                                System.out.println("Such Option Doesn't Exist.Try Again");
-                            }
 
                         }
                         while (userChoice!=400);
@@ -296,20 +306,17 @@ public class Main {
 
                 default:
                     System.out.println("Thanks For Shopping Here :)");
-                   /* for (String i : soObj.theSellersAuthorizingRequests){
-                    System.out.println(i);
-                }
             }
         }
-        while (accountChoice!=100);*/
+        while (accountChoice!=100);
 
 
 
 
 
-        while (true){
+       /* while (true){
 
-            System.out.println("0:out  1:add   2:see");
+            System.out.println("0:out  1:add   2:see 3:remove 4:search by name");
             int ch = input.nextInt();
 
             if (ch == 0){
@@ -320,10 +327,17 @@ public class Main {
                 soObj.addProduct();
             }
 
+            else if (ch == 3) {
+                uoObj.removeFromCart();
+            }
+
+            else if(ch==4){
+                uoObj.searchByName();
+            }
             else{
                 uoObj.addToCart_LeaveComment();
             }
-        }
+        }*/
 
 
 

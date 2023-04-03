@@ -45,13 +45,13 @@ public class Menus {
         System.out.println("Welcome To The Shop\nPlease Choose From The Following Menu:");
         System.out.println("1 : Edit Personal Info");
         System.out.println("2 : See The Products (In This Section You Can See The Products From Your Chosen Category,Add Them To Your Cart Or Leave A Comment)");
-        System.out.println("3 : See All The Products");
         System.out.println("4 : Search By Brand(For Books : Search By Publisher)");
         System.out.println("5 : Search By Product Name");
         System.out.println("6 : Search By The Seller Company");
         System.out.println("7 : See Your Shopping Cart");
         System.out.println("8 : See Your Orders Lists");
         System.out.println("9 : Make Funding Requests");
+        System.out.println("12 : See Funding Requests Result");
         System.out.println("10 : See Wallet");
         System.out.println("11 : Contact Us");
         System.out.println("400 : Get Out");
@@ -63,7 +63,9 @@ public class Menus {
         System.out.println("1 : Remove The Product From Your Cart");
         System.out.println("2 : Add The Quantity Of A Product");
         System.out.println("3 : See Final Price");
-        System.out.println("4 : Finalizing Your Cart\nATTENTION : In This Section There Is No Way To Cancel Your Order");
+        System.out.println("4 : Request For Finalizing Order");
+        System.out.println("5 : Checking Confirmation for Finalizing Order");
+        System.out.println("6 : Finalizing Your Cart\nATTENTION : In This Section There Is No Way To Cancel Your Order");
         System.out.println("500 : Get Out");
 
     }

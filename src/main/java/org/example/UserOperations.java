@@ -191,13 +191,15 @@ public class UserOperations {
     public void addToCart_LeaveCommentChoice(){
         System.out.println("1 : Add To Cart");
         System.out.println("2 : Leave A Comment");
+        System.out.println("3 : Get Out");
         int choicee = input.nextInt();
         if (choicee == 1){
             add();
         }
-        else {
+        else if(choicee == 2) {
             comment();
         }
+
     }
 
 
@@ -265,16 +267,26 @@ public class UserOperations {
 
     public void searchByName(){
 
+        System.out.println("Please Enter The Name Of Product To Search By Name");
         String name = input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
             if (i.getName().equalsIgnoreCase(name)){
 
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(Panels.theProducts.indexOf(i));
-                i.toStringPhone();
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                }
+
+                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i));
+                    i.toStringPhone();
+                }
+
+                else if (Objects.nonNull(i.getCategory())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+
+                }
 
                 flag++;
 
@@ -294,17 +306,26 @@ public class UserOperations {
 
     public void searchByBrand(){
 
+        System.out.println("Please Enter The Brand To Search By Brand");
         String brand = input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
             if (i.getBrand().equalsIgnoreCase(brand)){
 
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(Panels.theProducts.indexOf(i));
-                i.toStringPhone();
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                }
 
+                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i));
+                    i.toStringPhone();
+                }
+
+                else if (Objects.nonNull(i.getCategory())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+
+                }
                 flag++;
 
             }
@@ -320,17 +341,26 @@ public class UserOperations {
 
     public void searchBySellerCompany(){
 
+        System.out.println("Please Enter The Seller Company To Search By Seller Company");
         String company = input.nextLine();
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
             if (i.getSellerCompany().equalsIgnoreCase(company)){
 
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
-                System.out.println(Panels.theProducts.indexOf(i));
-                i.toStringPhone();
-                System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                }
 
+                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i));
+                    i.toStringPhone();
+                }
+
+                else if (Objects.nonNull(i.getCategory())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+
+                }
                 flag++;
 
             }
@@ -350,10 +380,22 @@ public class UserOperations {
 
         for (Product i : shoppingCart){
 
-            System.out.println(shoppingCart.indexOf(i) + i.toStringProduct());
-            System.out.println(shoppingCart.indexOf(i));
-            i.toStringPhone();
-            System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
+            if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+                System.out.println(shoppingCart.indexOf(i) + i.toStringLaptop());
+            }
+
+            else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                System.out.println(shoppingCart.indexOf(i));
+                i.toStringPhone();
+            }
+
+            else if (Objects.nonNull(i.getCategory())){
+                System.out.println(shoppingCart.indexOf(i) + i.toStringProduct());
+
+            }
+
+
+
 
         }
 
@@ -458,39 +500,66 @@ public class UserOperations {
 
     public void finalizeOrderList(){
 
-        Shop shop = new Shop();
+
 
         for (Product i : Panels.theProducts){
             user.ListOfOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
-            shop.theWholeOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
+             Panels.theWholeOrders.add(i.toString() + localDate.toString() + getTotalPrice() + user.getUserName());
         }
-        shoppingCart = null;
+        shoppingCart.clear();
     }
 
     public void authorizedOrders(){
 
-        String password = input.nextLine();
 
-        AdminOperations AuthorizedRequests = new AdminOperations();
+        System.out.println("enter password");
+        String password = input.nextLine();
 
         int flag = 0;
 
-       /* for (String i : AuthorizedRequests.AcceptedOrderListsRequests) {
+        for (String i : Panels.AcceptedOrderListsRequests) {
 
             if (password.equals(i)) {
 
-
-
-        }*/flag++;
-
-        if (flag != 0) {
-            for (String i : user.ListOfOrders){
-                System.out.println(i);
-                OrderConfirmChecker = true;
+                flag++;
             }
         }
+
+        if (flag != 0) {
+            System.out.println("You Are Confirmed to Finalize Your Order!");
+            OrderConfirmChecker = true;
+            }
+
         else {
             System.out.println("Your order is Not confirmed");
+            OrderConfirmChecker = false;
+        }
+
+    }
+
+    public void acceptedFunds(){
+
+
+        System.out.println("enter password");
+        String password = input.nextLine();
+
+        int flag = 0;
+
+        for (String i : Panels.userFundingAccepted) {
+
+            if (password.equals(i)) {
+
+                flag++;
+            }
+        }
+
+        if (flag != 0) {
+            System.out.println("Your Fund is Added!");
+            OrderConfirmChecker = true;
+        }
+
+        else {
+            System.out.println("Your Fund is Not confirmed");
             OrderConfirmChecker = false;
         }
 
@@ -505,7 +574,7 @@ public class UserOperations {
         String password = input.nextLine();
         for (User i : Panels.theUsers) {
 
-            if (password.equalsIgnoreCase(i.getPassWord())) {
+            if (password.equals(i.getPassWord())) {
 
                 flag++;
             }

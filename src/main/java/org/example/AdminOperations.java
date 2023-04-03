@@ -108,7 +108,7 @@ public class AdminOperations {
                 int flag = 0;
                 String password = input.nextLine();
                 if (password.equals("o")){
-
+                    Panels.userFunding.clear();
                     break;
                 }
 
@@ -116,11 +116,12 @@ public class AdminOperations {
 
                     for (String i : Panels.userFunding){
 
-                        if (password.equalsIgnoreCase(i)){
-
+                        if (password.equals(i)){
                             for (User j : Panels.theUsers){
                                 if (password.equals(j.getPassWord())){
-                                    j.setWallet(j.getWallet()+input.nextDouble());
+                                    System.out.println("Enter the amount of fund");
+                                    double fund = input.nextDouble();
+                                    j.setWallet(j.getWallet()+fund);
                                 }
                             }
 
@@ -133,13 +134,29 @@ public class AdminOperations {
                     }
 
                     else {
+                        Panels.userFundingAccepted.add(password);
                         Panels.userFunding.remove(password);
                     }
 
-                    Panels.userFunding.clear();
                 }
             }
     }
+
+    public void UserSeeWallet(){
+        int flag = 0;
+        System.out.println("Enter Password To See Wallet");
+        String pass = input.nextLine();
+        for (User i : Panels.theUsers){
+            if (pass.equals(i.getPassWord())){
+                System.out.println(i.getWallet());
+                flag++;
+            }
+        }
+        if (flag==0){
+            System.out.println("User Doesn't Exist");
+        }
+    }
+
 
 
     public void showFinalOrderingRequests() {
@@ -155,14 +172,16 @@ public class AdminOperations {
 
         while (true){
 
-            int flag = 0;
+            int flag;
             String password = input.nextLine();
             if (password.equals("o")){
+                Panels.orderREQUEST.clear();
                 break;
             }
 
             else {
 
+                flag = 0;
                 for (String i : Panels.orderREQUEST){
                     if (password.equals(i)){
                         flag++;
@@ -176,9 +195,8 @@ public class AdminOperations {
                 else {
                     //AcceptedOrderListsRequests.add(password);
                     Panels.orderREQUEST.remove(password);
+                    Panels.AcceptedOrderListsRequests.add(password);
                 }
-
-                Panels.orderREQUEST.clear();
 
             }
 

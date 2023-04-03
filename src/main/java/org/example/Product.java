@@ -332,6 +332,9 @@ public class Product {
         System.out.println("Please Enter the Brand");
         setBrand(input.nextLine());
 
+        System.out.println("Please Enter the Quantity");
+        setSellerQuantity(input.nextInt());
+
         System.out.println("Please Enter the Producing Year");
         setProducingYear(input.nextLine());
 
@@ -360,26 +363,27 @@ public class Product {
         System.out.println("Dear Seller Please Enter The Name Of Your Company ");
         setSellerCompany(input.nextLine());
 
+        System.out.println("Please Enter the Brand");
+        setBrand(input.nextLine());
+
         System.out.println("Please Enter the Name of Your Product");
         setName(input.nextLine());
 
-        System.out.println("Please Enter the Brand");
-        setBrand(input.nextLine());
+        System.out.println("Please Enter the Quantity");
+        setSellerQuantity(input.nextInt());
 
         System.out.println("Please Enter the Price");
         setPrice(input.nextDouble());
 
-        System.out.println("Please Enter the Producing Year");
-        setProducingYear(input.nextLine());
-
-        System.out.println("Please Enter the RAM");
-        setRAM(input.nextLine());
 
         System.out.println("Please Enter the Color");
         setColor(input.nextLine());
 
         System.out.println("Please Enter the OS");
         setOS(input.nextLine());
+
+        System.out.println("Please Enter the RAM");
+        setRAM(input.nextLine());
 
         System.out.println("Please Enter the Screen Size");
         setScreenSize(input.nextLine());
@@ -392,6 +396,10 @@ public class Product {
 
         System.out.println("Please Enter the Storage Capacity");
         setStorageCapacity(input.nextLine());
+
+        System.out.println("Please Enter the Producing Year");
+        setProducingYear(input.nextLine());
+
     }
 
 
@@ -453,6 +461,39 @@ public class Product {
                  "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
                  "WANTED QUANTITY:" + userQuantity + "  " + "COMMENTS:" );
                  showComments();
+    }
+
+    public String toString(){
+
+        return  "CATEGORY:" + category + "  " +
+                "NAME:" + name +"  " +
+                "BRAND/PUBLISHER:" + brand + "  " +
+                "AUTHOR NAME (FOR BOOKS):" + authorName + "  " +
+                "PUBLISHING YEAR (FOR BOOKS):" + publishYear + "  " +
+                "PRICE:" + price + "  " +
+                "GENDER:" + gender + "  " +
+                "MATERIAL:" + material + "  " +
+                "STYLE:" + style + "  " +
+                "SIZE:" + size + "  " +
+                "WEIGHT:" + weight + "  " +
+                "COLOR:" + color + "  " +
+                "SEASON:" + season + "  " +
+                "PURPOSE:" + purpose + "  " +
+                "FORMULA:" + formula + "  " +
+                "SCENT:" + scent + "  " +
+                "SELLER:" + SellerCompany + "  " +
+                "AVAILABLE QUANTITY" + sellerQuantity + "  " +
+                "WANTED QUANTITY" + userQuantity + "  " +
+                "COMMENTS" + comments + "  " +
+                "RAM:" + RAM + "  " +
+                "OS:" + OS + "  " +
+                "BATTERY LIFE:" + BatteryLife + "  " +
+                "PRODUCING YEAR:" + producingYear + "  " +
+                "CAMERA QUALITY:" + CameraQuality + "  " +
+                "STORAGE CAPACITY:" + StorageCapacity + "  " +
+                "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
+                "WANTED QUANTITY:" + userQuantity + "\n";
+
     }
 
 
