@@ -229,12 +229,14 @@ public class Main {
 
                                         case 4:
                                             uoObj.OrderRequest();
-                                            uoObj.OrderRequest();
+                                            //uoObj.OrderRequest();
                                             uoObj.authorizedOrders();
 
                                             if (uoObj.OrderConfirmChecker==true){
-                                                uoObj.finalizeOrderList();
                                                 uoObj.finalizeOrderWallet();
+                                                uoObj.fixProductQuantity();
+                                                uoObj.finalizeOrderList();
+
                                             }
 
                                             else {

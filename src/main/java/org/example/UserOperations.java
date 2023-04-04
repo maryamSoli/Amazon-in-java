@@ -476,15 +476,12 @@ public class UserOperations {
 
 
     public void finalizeOrderWallet(){
-        // fix product quantity
-        for (Product i : shoppingCart) {
-            i.setSellerQuantity(i.getSellerQuantity() - i.getUserQuantity());
-        }
+
         //add 90% to sellers wallet
         for (Product i : shoppingCart){
             for (Seller j : Panels.theSellers){
                 if (i.getSellerCompany().equalsIgnoreCase(j.getCompanyName())){
-                    j.setWallet(j.getWallet()+(0.9*i.getPrice()));
+                    j.setWallet(j.getWallet()+(0.9*i.getUserQuantity()*i.getPrice()));
                 }
             }
         }
@@ -514,6 +511,21 @@ public class UserOperations {
             System.out.println("User Doesn't Exist");
         }
 
+        // fix product quantity
+
+
+
+    }
+
+    public void fixProductQuantity(){
+        for (Product i : shoppingCart) {
+            for (Product j : Panels.theProducts) {
+                if (i.equals(j)) {
+                    j.setSellerQuantity(j.getSellerQuantity() - j.getUserQuantity());
+                    j.setUserQuantity(0);
+                }
+            }
+        }
     }
 
     public void finalizeOrderList() {
@@ -524,7 +536,7 @@ public class UserOperations {
             if (pass.equals(i.getPassWord())) {
                 for (Product j : shoppingCart) {
                     ListOfOrders.add(j);
-                    Panels.theWholeOrders.add(j.toString() + localDate.toString() + getTotalPrice() + i.getUserName());
+                    Panels.theWholeOrders.add(j.toString() + "  " + "Local date:" + localDate.toString() + "  "+ "Total Price:" + getTotalPrice() + "Username:"+ i.getUserName());
                     flag++;
                 }
             }
