@@ -230,9 +230,9 @@ public class Main {
                                         case 4:
                                             uoObj.OrderRequest();
                                             //uoObj.OrderRequest();
-                                            uoObj.authorizedOrders();
+                                          //  uoObj.authorizedOrders();
 
-                                            if (uoObj.OrderConfirmChecker==true){
+                                           /* if (uoObj.OrderConfirmChecker==true){
                                                 uoObj.finalizeOrderWallet();
                                                 uoObj.fixProductQuantity();
                                                 uoObj.finalizeOrderList();
@@ -241,7 +241,7 @@ public class Main {
 
                                             else {
                                                 System.out.println("Your Order Hasn't Been Confirmed By Admins");
-                                            }
+                                            }*/
                                             break;
 
                                         case 5:
@@ -250,8 +250,9 @@ public class Main {
 
                                         case 6:
                                             if (uoObj.OrderConfirmChecker==true){
-                                                uoObj.finalizeOrderList();
                                                 uoObj.finalizeOrderWallet();
+                                                uoObj.fixProductQuantity();
+                                                uoObj.finalizeOrderList();
                                             }
                                             else {
                                                 System.out.println("Your Order Hasn't Been Confirmed By Admins");
