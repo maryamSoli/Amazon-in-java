@@ -278,20 +278,23 @@ public class UserOperations {
 
             if (i.getName().equalsIgnoreCase(name)){
 
-                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+               /* if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
                 }
 
-                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
-                    System.out.println(Panels.theProducts.indexOf(i));
-                    i.toStringPhone();
+                if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i)+i.toStringPhone());
+
                 }
 
-                else if (Objects.nonNull(i.getCategory())){
+                if (Objects.nonNull(i.getCategory())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
 
                 }
 
+                flag++;*/
+
+                System.out.println(Panels.theProducts.indexOf(i)+i.toString());
                 flag++;
 
             }
@@ -318,19 +321,22 @@ public class UserOperations {
 
             if (i.getBrand().equalsIgnoreCase(brand)){
 
-                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+               /* if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
                 }
 
-                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
-                    System.out.println(Panels.theProducts.indexOf(i));
-                    i.toStringPhone();
+                if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i)+i.toStringPhone());
+
                 }
 
-                else if (Objects.nonNull(i.getCategory())){
+                if (Objects.nonNull(i.getCategory())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
 
                 }
+                flag++;*/
+
+                System.out.println(Panels.theProducts.indexOf(i)+i.toString());
                 flag++;
 
             }
@@ -352,21 +358,27 @@ public class UserOperations {
         int flag = 0;
         for (Product i : Panels.theProducts ){
 
+
             if (i.getSellerCompany().equalsIgnoreCase(company)){
 
-                if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
+              /*  if(Objects.isNull(i.getCategory()) && Objects.isNull(i.getCameraQuality())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringLaptop());
+                    flag++;
                 }
 
-                else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
-                    System.out.println(Panels.theProducts.indexOf(i));
-                    i.toStringPhone();
+                 if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
+                    System.out.println(Panels.theProducts.indexOf(i) + i.toStringPhone());
+                     flag++;
+
                 }
 
-                else if (Objects.nonNull(i.getCategory())){
+                 if (Objects.nonNull(i.getCategory())){
                     System.out.println(Panels.theProducts.indexOf(i) + i.toStringProduct());
+                     flag++;
 
-                }
+                }*/
+
+                System.out.println(Panels.theProducts.indexOf(i)+i.toString());
                 flag++;
 
             }
@@ -376,8 +388,8 @@ public class UserOperations {
 
             System.out.println("Product With Seller Company " + company + " not Found.");
         }
-
         addToCart_LeaveCommentChoice();
+
     }
 
     public void seeShoppingCart(){

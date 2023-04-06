@@ -33,7 +33,7 @@ public class Main {
         Panels.theAdmins.add(defAdmin);
 
 
-        do {
+       /* do {
 
             mObj.AccountMenu();
             accountChoice = input.nextInt();
@@ -229,19 +229,7 @@ public class Main {
 
                                         case 4:
                                             uoObj.OrderRequest();
-                                            //uoObj.OrderRequest();
-                                          //  uoObj.authorizedOrders();
 
-                                           /* if (uoObj.OrderConfirmChecker==true){
-                                                uoObj.finalizeOrderWallet();
-                                                uoObj.fixProductQuantity();
-                                                uoObj.finalizeOrderList();
-
-                                            }
-
-                                            else {
-                                                System.out.println("Your Order Hasn't Been Confirmed By Admins");
-                                            }*/
                                             break;
 
                                         case 5:
@@ -311,13 +299,13 @@ public class Main {
                     System.out.println("Thanks For Shopping Here :)");
             }
         }
-        while (accountChoice!=100);
+        while (accountChoice!=100);*/
 
 
 
 
 
-       /* while (true){
+        while (true){
 
             System.out.println("0:out  1:add   2:see 3:remove 4:search by name");
             int ch = input.nextInt();
@@ -337,10 +325,19 @@ public class Main {
             else if(ch==4){
                 uoObj.searchByName();
             }
+
+            else if(ch==5){
+                uoObj.searchByBrand();
+            }
+
+            else if(ch==6){
+                uoObj.searchBySellerCompany();
+            }
+
             else{
                 uoObj.addToCart_LeaveComment();
             }
-        }*/
+        }
 
 
 
