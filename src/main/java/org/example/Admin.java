@@ -14,7 +14,7 @@ public class Admin {
 
     Scanner input = new Scanner(System.in);
 
-    public void setUserName() {
+    public void setUserName() { // creating random usernames and passwords using the concept of uuid
         UUID uuid = UUID.randomUUID();
 
         this.userName = uuid.toString();
@@ -34,7 +34,7 @@ public class Admin {
         return passWord;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) { //asking for an e-mail address with a specific pattern using regex and checking uts validity inside the setter method
 
         String emailPattern = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
 
@@ -87,7 +87,7 @@ public class Admin {
                 "E-Mail:" + email + "\n" ;
     }
 
-    public void defaultAdmin(){
+    public void defaultAdmin(){ //default Admin
 
         this.passWord = "123456";
         this.userName = "defaultAdmin";

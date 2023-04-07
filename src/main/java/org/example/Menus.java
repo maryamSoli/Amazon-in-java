@@ -8,7 +8,6 @@ public class Menus {
         System.out.println("1: Admin");
         System.out.println("2: Seller");
         System.out.println("3: User");
-        System.out.println("4 : Logout");
         System.out.println("100 : Get Out");
 
     }
@@ -46,8 +45,6 @@ public class Menus {
         System.out.println("1 : Edit Personal Info");
         System.out.println("2 : See The Products (In This Section You Can See The Products From Your Chosen Category,Add Them To Your Cart Or Leave A Comment)");
         System.out.println("4 : Search By Brand(For Books : Search By Publisher)");
-        System.out.println("5 : Search By Product Name");
-        System.out.println("6 : Search By The Seller Company");
         System.out.println("7 : See Your Shopping Cart");
         System.out.println("8 : See Your Orders Lists");
         System.out.println("9 : Make Funding Requests");
@@ -74,5 +71,18 @@ public class Menus {
 
         System.out.println("1 : Create Account");
         System.out.println("2 : Login");
+    }
+
+    public void ContactMenu(){
+
+        System.out.println("######################");
+        System.out.println("MEANS TO CONTACT US :");
+        System.out.println("######################");
+        System.out.println("------------------------------------");
+        System.out.println("WEB ADDRESS : www.eiReneOnlineShop.ir");
+        System.out.println("------------------------------------");
+        System.out.println("SUPPORT PHONE : 0127896543322");
+        System.out.println("------------------------------------");
+
     }
 }

@@ -37,7 +37,6 @@ public class Product {
     ArrayList<String> comments = new ArrayList();
 
     Scanner input = new Scanner(System.in);
-    //Scanner input = new Scanner(System.in);
 
     public void setName(String name) {
         this.name = name;
@@ -273,9 +272,10 @@ public class Product {
         setPrice(input.nextDouble());
 
         System.out.println("Please Enter the Brand (For Books Enter Publisher)");
+        input.nextLine();// java did not get the below input so i had to put this here
         setBrand(input.nextLine());
+        //System.out.println(getBrand());
 
-        input.nextLine();
 
         System.out.println("Please Enter the Author Name (Only For Books)");
         setAuthorName(input.nextLine());
@@ -287,9 +287,9 @@ public class Product {
         setSellerQuantity(input.nextInt());
 
         System.out.println("Please Enter the Color");
+        input.nextLine();
         setColor(input.nextLine());
 
-        input.nextLine();
 
         System.out.println("Please Enter the Gender");
         setGender(input.nextLine());
@@ -334,9 +334,9 @@ public class Product {
         setPrice(input.nextDouble());
 
         System.out.println("Please Enter the Brand");
+        input.nextLine();
         setBrand(input.nextLine());
 
-        input.nextLine();
 
         System.out.println("Please Enter the Quantity");
         setSellerQuantity(input.nextInt());
@@ -385,9 +385,9 @@ public class Product {
 
 
         System.out.println("Please Enter the Color");
+        input.nextLine();
         setColor(input.nextLine());
 
-        input.nextLine();
 
         System.out.println("Please Enter the OS");
         setOS(input.nextLine());
@@ -432,9 +432,9 @@ public class Product {
                 "FORMULA:" + formula + "  " +
                 "SCENT:" + scent + "  " +
                 "SELLER:" + SellerCompany + "  " +
-                "AVAILABLE QUANTITY" + sellerQuantity + "  " +
-                "WANTED QUANTITY" + userQuantity + "  " +
-                "COMMENTS" + comments + "\n";
+                "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
+                "WANTED QUANTITY:" + userQuantity + "  " +
+                "COMMENTS:" + comments + "\n";
 
     }
 
@@ -450,9 +450,9 @@ public class Product {
                 "BATTERY LIFE:" + BatteryLife + "  " +
                 "PRODUCING YEAR:" + producingYear + "  " +
                 "WEIGHT:" +  weight + "  " +
-                "AVAILABLE QUANTITY" + sellerQuantity + "  " +
-                "WANTED QUANTITY" + userQuantity + "  " +
-                "COMMENTS" + comments + "\n";
+                "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
+                "WANTED QUANTITY:" + userQuantity + "  " +
+                "COMMENTS:" + comments + "\n";
     }
 
     public String toStringPhone(){
@@ -478,7 +478,7 @@ public class Product {
 
         return  "CATEGORY:" + category + "  " +
                 "NAME:" + name +"  " +
-                "BRAND/PUBLISHER:" + brand + "  " +
+                "BRAND/PUBLISHER:" + this.getBrand() + "  " +
                 "AUTHOR NAME (FOR BOOKS):" + authorName + "  " +
                 "PUBLISHING YEAR (FOR BOOKS):" + publishYear + "  " +
                 "PRICE:" + price + "  " +
@@ -493,9 +493,9 @@ public class Product {
                 "FORMULA:" + formula + "  " +
                 "SCENT:" + scent + "  " +
                 "SELLER:" + SellerCompany + "  " +
-                "AVAILABLE QUANTITY" + sellerQuantity + "  " +
-                "WANTED QUANTITY" + userQuantity + "  " +
-                "COMMENTS" + comments + "  " +
+                "AVAILABLE QUANTITY:" + sellerQuantity + "  " +
+                "WANTED QUANTITY:" + userQuantity + "  " +
+                "COMMENTS:" + comments + "  " +
                 "RAM:" + RAM + "  " +
                 "OS:" + OS + "  " +
                 "BATTERY LIFE:" + BatteryLife + "  " +

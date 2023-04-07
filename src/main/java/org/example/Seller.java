@@ -11,7 +11,7 @@ public class Seller {
 
     Scanner input = new Scanner(System.in);
 
-    public void setPassWord() {
+    public void setPassWord() { // creating random passwords using uuid
         UUID uuid = UUID.randomUUID();
         this.passWord = uuid.toString();
     }

@@ -135,17 +135,17 @@ public class SellerOperations {
 
             switch (choice) {
 
-                case 1:
+                case 1: // Electronics chosen
 
                     electronicsMenu();
                     int electronicsChoice = input.nextInt();
-                    if (electronicsChoice == 1) {
-                        Product laptop = new Product();
+                    if (electronicsChoice == 1) { // Laptop is chosen from  electronicsMenu
+                        Product laptop = new Product(); // creating an obj from Product class
                         laptop.Laptop();// calling Laptop method from Laptop class
                         int flag = 0;
                         for (Product i : Panels.theProducts) {
                             if (laptop.equals(i)) {
-                                i.addQuantityByOne();
+                                i.addQuantityByOne();// explained earlier
                                 flag++;
                             }
                         }
@@ -172,14 +172,14 @@ public class SellerOperations {
 
                     break;
 
-                case 2:
+                case 2:// other categories
 
                     Product product = new Product();
                     product.Product();
                     int flag = 0;
                     for (Product i : Panels.theProducts) {
                         if (product.equals(i)) {
-                            // i.addQuantityByOne();
+                             i.addQuantityByOne();
                             flag++;
                         }
                     }
@@ -200,6 +200,22 @@ public class SellerOperations {
 
         for (Seller i : Panels.theSellers){
             System.out.println(i.toString());
+        }
+    }
+
+    public void sellerSeeWallet(){
+        int flag = 0;
+        System.out.println("Enter Password To See Wallet");
+        String pass = input.nextLine();
+        //input.nextLine();
+        for (Seller i : Panels.theSellers){
+            if (pass.equals(i.getPassWord())){
+                System.out.println(i.getWallet());
+                flag++;
+            }
+        }
+        if (flag==0){
+            System.out.println("Seller Doesn't Exist");
         }
     }
 

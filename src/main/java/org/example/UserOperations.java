@@ -14,9 +14,7 @@ public class UserOperations {
     Scanner input = new Scanner(System.in);
     private double totalPrice;
     SellerOperations SOobj = new SellerOperations();
-    Seller Sobj = new Seller();
-    Shop shop = new Shop();
-   // User user = new User();
+
     LocalDate localDate = LocalDate.now();
 
     public void setTotalPrice(double totalPrice) {
@@ -71,7 +69,7 @@ public class UserOperations {
 
 
 
-    public void editPersonalInfo(){ //only after login //Not sure about the function try it later
+    public void editPersonalInfo(){ //only after login
         User user = new User();
         int flag =0;
         String userNameForUpdating = "";
@@ -107,7 +105,7 @@ public class UserOperations {
 
                 switch (choice){
 
-                   case 1:
+                   case 1: //Change Your Address
 
                        String newAddress;
                        System.out.println("You Can Change Your Address Now");
@@ -124,7 +122,7 @@ public class UserOperations {
                        break;
 
 
-                   case 2:
+                   case 2://Change Your Phone Number
                        String newNumber;
                        System.out.println("You Can Change Your Phone Number Now");
                        newNumber = in.nextLine();
@@ -138,7 +136,7 @@ public class UserOperations {
                     break;
 
 
-                   case 3:
+                   case 3://Change Your E-Mail
                        String newEmail;
                        System.out.println("You Can Change Your E-mail Now");
                        newEmail = in.nextLine();
@@ -403,8 +401,8 @@ public class UserOperations {
             }
 
             else if (Objects.isNull(i.getCategory()) && Objects.nonNull(i.getCameraQuality())){
-                System.out.println(shoppingCart.indexOf(i));
-                i.toStringPhone();
+                System.out.println(shoppingCart.indexOf(i)+i.toStringPhone());
+
             }
 
             else if (Objects.nonNull(i.getCategory())){
@@ -556,7 +554,7 @@ public class UserOperations {
         if (flag == 0) {
             System.out.println("such user does not exist");
         }
-
+        fixProductQuantity();
         shoppingCart.clear();
     }
 
@@ -569,7 +567,7 @@ public class UserOperations {
         for (User i : Panels.theUsers) {
             if (pass.equals(i.getPassWord())) {
                 for (Product j : ListOfOrders) {
-                    System.out.println(j + localDate.toString() + getTotalPrice() + i.getUserName());
+                    System.out.println(j + "  " + "date:" + localDate.toString() + "  " + "Total Price:" + getTotalPrice() + "  "+ "username:" + i.getUserName());
                     flag++;
                 }
             }

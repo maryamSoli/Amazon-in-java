@@ -1,20 +1,13 @@
 package org.example;
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class AdminOperations {
 
     public boolean  aloginChecker;
 
-   // ArrayList<String> AcceptedOrderListsRequests = new ArrayList();
     Scanner input = new Scanner(System.in);
-
-    //User user = new User();
-
-
-
-
 
 
 
@@ -162,7 +155,7 @@ public class AdminOperations {
     public void showFinalOrderingRequests() {
 
         System.out.println("SHOWING THE USERS THAT ASKED FOR FINALIZING ORDERS");
-        //UserOperations orequest = new UserOperations();
+
         for (String i : Panels.orderREQUEST) {
             System.out.println(i);
             }
@@ -193,7 +186,7 @@ public class AdminOperations {
                 }
 
                 else {
-                    //AcceptedOrderListsRequests.add(password);
+
                     Panels.orderREQUEST.remove(password);
                     Panels.AcceptedOrderListsRequests.add(password);
                 }

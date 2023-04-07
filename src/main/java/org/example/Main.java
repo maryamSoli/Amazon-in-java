@@ -6,20 +6,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Admin aObj = new Admin();
-        Seller sObj = new Seller();
-        User uObj = new User();
+        // defining objs from the classes that are used in Main
         AdminOperations aoObj = new AdminOperations();
         SellerOperations soObj = new SellerOperations();
         UserOperations uoObj = new UserOperations();
-        Product pObj = new Product();
-        Shop shopObj = new Shop();
         Menus mObj = new Menus();
         Scanner input = new Scanner(System.in);
 
 
-
-
+        //defining different choices for different menus
         int accountChoice;
         int adminChoice;
         int userChoice;
@@ -28,22 +23,26 @@ public class Main {
         int createAccount_LoginChoice;
 
 
+        //adding the default admin username and password to theAdmins arrlist
         Admin defAdmin = new Admin();
         defAdmin.defaultAdmin();
         Panels.theAdmins.add(defAdmin);
 
+        System.out.println("***********************************************************************");
+        System.out.println("                     WELCOME TO eiRene ONLINE SHOP");
+        System.out.println("***********************************************************************");
 
-       /* do {
+        do {
 
             mObj.AccountMenu();
             accountChoice = input.nextInt();
 
             switch (accountChoice){
 
-                case 1:
+                case 1:// Admin
                     System.out.println("Login Please");
                     aoObj.login();
-                    if (aoObj.aloginChecker == true){
+                    if (aoObj.aloginChecker == true){//the following menu can only be accessed if this is true
 
 
                         do {
@@ -78,10 +77,10 @@ public class Main {
                                 case 8:
                                     uoObj.showProducts();
                                     break;
-                                case 9:
+                                case 9://Show the total profit of the shop
                                     System.out.println(Panels.totalProfit);
                                     break;
-                                case 10:
+                                case 10:// all the order lists from all users
                                     uoObj.seeWholeOrdersList();
                                     break;
                                   }
@@ -98,20 +97,18 @@ public class Main {
 
 
 
-                case 2:
+                case 2://Seller
                      mObj.createAccount_LoginMenu();
                      createAccount_LoginChoice =input.nextInt();
 
-                     if (createAccount_LoginChoice==1){
-                         //SellerOperations s = new SellerOperations();
+                     if (createAccount_LoginChoice==1){//create account
                          soObj.CreateAccount();
                      }
 
-                     else {
-                         //SellerOperations s = new SellerOperations();
+                     else {//login
                          soObj.login();
 
-                         if (soObj.sloginChecker == true){
+                         if (soObj.sloginChecker == true){//the following menu can only be accessed if this is true
 
                              do {
 
@@ -128,7 +125,7 @@ public class Main {
 
                                  else if (sellerChoice == 3) {
 
-                                     if (soObj.authorizedSellersChecker==true) {
+                                     if (soObj.authorizedSellersChecker==true) {// only if this is true the seller can add Products
                                          soObj.addProduct();
                                      }
 
@@ -139,11 +136,11 @@ public class Main {
                                  }
 
                                  else if (sellerChoice == 4) {
-                                     System.out.println(sObj.getWallet());
+                                      soObj.sellerSeeWallet();
                                  }
 
                                  else if (sellerChoice == 5) {
-                                     shopObj.ContactMenu();
+                                     mObj.ContactMenu();
                                  }
 
                                  else {
@@ -166,18 +163,18 @@ public class Main {
 
 
 
-                case 3:
+                case 3://User
                     mObj.createAccount_LoginMenu();
                     createAccount_LoginChoice =input.nextInt();
 
-                    if (createAccount_LoginChoice==1){
+                    if (createAccount_LoginChoice==1){//create account
                         uoObj.CreateAccount();
                     }
 
                     else {
                         uoObj.login();
                     }
-                    if (uoObj.uloginChecker == true){
+                    if (uoObj.uloginChecker == true){//the following menu can only be accessed if this is true
 
                         do {
 
@@ -196,19 +193,19 @@ public class Main {
                                 uoObj.searchByBrand();
                             }
 
-                            else if (userChoice==5){
+                           /* else if (userChoice==5){
                                 uoObj.searchByName();
                             }
 
                             else if(userChoice==6){
                                 uoObj.searchBySellerCompany();
-                            }
+                            }*/
 
                             else if (userChoice==7){
 
                                 uoObj.seeShoppingCart();
 
-                                do {
+                                do {//all the following stuff are inside choice 7
 
                                     mObj.shoppingCartMenu();
                                     shoppingCartChoice = input.nextInt();
@@ -239,8 +236,8 @@ public class Main {
                                         case 6:
                                             if (uoObj.OrderConfirmChecker==true){
                                                 uoObj.finalizeOrderWallet();
-                                                uoObj.fixProductQuantity();
                                                 uoObj.finalizeOrderList();
+                                               // uoObj.fixProductQuantity();
                                             }
                                             else {
                                                 System.out.println("Your Order Hasn't Been Confirmed By Admins");
@@ -270,7 +267,7 @@ public class Main {
                             }
 
                             else if (userChoice==11){
-                                shopObj.ContactMenu();
+                                mObj.ContactMenu();
                             }
 
 
@@ -284,28 +281,17 @@ public class Main {
                     }
                     break;
 
-
-
-
-                case 4:
-                    aoObj.aloginChecker = false;
-                    soObj.sloginChecker = false;
-                    uoObj.uloginChecker = false;
-                    break;
-
-
-
                 default:
                     System.out.println("Thanks For Shopping Here :)");
             }
         }
-        while (accountChoice!=100);*/
+        while (accountChoice!=100);
 
 
 
 
 
-        while (true){
+       /* while (true){
 
             System.out.println("0:out  1:add   2:see 3:remove 4:search by name");
             int ch = input.nextInt();
@@ -323,21 +309,42 @@ public class Main {
             }
 
             else if(ch==4){
-                uoObj.searchByName();
+                System.out.println("press 1 to search with name");
+                System.out.println("press 2 to search with brand");
+                System.out.println("press 3 to search with seller company");
+
+               int wholeSearchChoice = input.nextInt();
+
+                switch (wholeSearchChoice) {
+
+                    case 1:// if wholeSearchChoice is 1
+
+                        uoObj.searchByName();
+
+                        break;
+
+                    case 2:// if it is 2
+
+                        uoObj.searchByBrand();
+
+                        break;
+
+                    case 3: // if it is 3
+
+                        uoObj.searchBySellerCompany();
+
+                        break;
+                }
             }
 
-            else if(ch==5){
-                uoObj.searchByBrand();
-            }
 
-            else if(ch==6){
-                uoObj.searchBySellerCompany();
-            }
+
+
 
             else{
                 uoObj.addToCart_LeaveComment();
             }
-        }
+        }*/
 
 
 
